@@ -1,0 +1,10 @@
+{
+  "name": "wb-nettix",
+  "description": "Nettix plugin for WordPress",
+  "homepage": "https://webbisivut.org/",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0+",
+  "require": {
+    "composer/installers": "~1.0"
+  }
+}

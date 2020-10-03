@@ -1,0 +1,421 @@
+/* Hakukone */
+.nettix_hakukone {
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 3px;
+    position: relative;
+}
+
+.nettix_hakukone .wb-md-3,
+.nettix_hakukone .wb-md-6 {
+    height: 100px;
+}
+
+.nettix_loader {
+    padding: 20px;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    display: block;
+    background-color: rgba(255,255,255,0.9);
+    z-index: 9;
+    opacity: 1;
+}
+
+.nettix_spinner {
+    top: 30%;
+    width: 200px;
+    height: 200px;
+    background-image: url('../img/ajax-loader.gif');
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px; /* Negative half of height. */
+    margin-left: -100px; /* Negative half of width. */
+}
+
+.nettix_h1 {
+    font-size: 28px;
+    color: #222;
+    height: 200px;
+    width: 100%;
+    position: fixed;
+    text-align: center;
+    top: 50%;
+    left: 0;
+    margin-top: 100px; /* Negative half of height. */
+    margin-left: 0px; /* Negative half of width. */
+}
+
+.nettix_select {
+    width: 100%;
+    padding: 10px 5px;
+}
+
+.nettix_input {
+    width: 100%;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#nettix_haku_btn,
+#nettix_tyhjenna_btn {
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    margin: 10px 0px;
+    border-radius: 3px;
+}
+
+.nettix_vehicle {
+    padding: 10px;
+}
+
+.nettix_pagination {
+    border: 1px solid #222;
+    padding: 5px 10px;
+    margin: 5px 5px 5px 0;
+    display: block;
+    float: left;
+    cursor: pointer;
+    text-align: center;
+}
+
+.nettix_img {
+    cursor: pointer;
+}
+
+.nettix_img,
+.nettix_img_single {
+    height: 250px;
+    background-size: cover;
+    background-position: center center;
+    margin-bottom: 10px;
+}
+
+.nettix_img_single {
+    margin: 20px 0px;
+}
+
+.nettix_vehicles_thumb img {
+    height: auto !important;
+    max-height: 150px !important;
+    width: auto !important;
+    max-width: 100% !important;
+}
+
+.nettix_vehicles_thumb {
+    background: #eee !important;
+}
+
+.nettix_thumb {
+    background: #eee;
+    text-align: center !important;
+    padding: 10px;
+}
+
+.nettix_thumb img {
+    height: auto;
+    max-height: 120px !important;
+    width: auto;
+    background-size: 100%;
+    background-position: center center;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+.nettix_lisatiedot_btn {
+    cursor: pointer;
+    width: 100%;
+    margin: 10px 0px;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Hakutulokset */
+.nettix_hakutulokset_wrap {
+    padding-top: 15px;
+}
+
+.slick-slide {
+    height:200px;
+ }
+ 
+ .slick-slide img {
+    height:200px;
+ }
+.nettix_vehicle_content_details {
+    padding: 30px 0px;
+}
+
+.nettix_detail {
+    padding: 10px;
+}
+
+.nettix_description {
+    white-space: pre-wrap; 
+}
+
+.nettix_takaisin_hakutuloksiin {
+    margin: 10px 0px;
+    cursor: pointer;
+    display: none;
+}
+
+.main_img_wrap {
+    text-align: center;
+}
+
+img.large_item_img {
+    max-width: 100%; 
+    height: auto; 
+    max-height: 600px;
+    margin: 0 auto !important; 
+}
+
+img.medium_item_img {
+    max-width: 100%; 
+    height: auto;
+    margin: 0 auto;
+}
+
+/* Hakutulokset sidebar */
+.nettix_sidebar {
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 3px;
+}
+
+.nettix_sidebar_wrapper {
+    margin-bottom: 30px;
+}
+
+.nettix_phone,
+.nettix_email {
+    padding: 10px;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.nettix_contact,
+.nettix_contact a:link,
+a.nettix_contact {
+    text-decoration: none !important;
+}
+
+#nettix_kiitos_viestista {
+    padding: 5px;
+    border: 3px solid #5ca300;
+    display: none;
+}
+
+.btn_nettix_odottaa {
+    background: #999 !important;
+    cursor: not-allowed !important;
+}
+
+#nettix_viesti_errors {
+    margin: 10px 0px;
+    padding: 5px;
+    border: 5px solid #ff0000;
+}
+
+#nettix_viesti_errors,
+#nettix_virhe_nimi,
+#nettix_virhe_email,
+#nettix_virhe_viesti {
+    display: none;
+}
+
+/* Slick */
+.hide_pagination {
+    display: none !important;
+}
+
+.nettix_slick_wrap {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.slider-nav {
+    margin: 0 auto;
+    width: 90%;
+    height: 100%;
+}
+
+/* Shortcode */
+#nettix_laskuri,
+#nettix_lang,
+#nettix_view,
+#nettix_singleid,
+#nettix_cpt {
+    opacity: 0 !important;
+}
+
+/* Customs */
+.nettix_details_bar_big,
+.nettix_details_bar_big2,
+.nettix_details_bar_small {
+    background: #9d1006;
+    color: #fff;
+    padding: 20px;
+    font-size: 21px;
+    text-align: center;
+    font-weight: 800;
+}
+
+.nettix_details_bar_big {
+    font-size: 21px;
+    margin-top: -20px;
+    margin-bottom: 20px;
+    z-index: 9;
+    position: relative;
+    height: fit-content;
+}
+
+.nettix_details_bar_big2 {
+    font-size: 21px;
+    margin-top: -10px;
+    z-index: 9;
+    position: relative;
+    height: fit-content;
+}
+
+ul.nettix_details_bar_big_ul,
+ul.nettix_details_bar_big_ul2,
+ul.nettix_details_bar_small_ul {
+    list-style-type: disc;
+    margin: 0 auto;
+    position: relative;
+    width: fit-content;
+    display: table;
+}
+
+ul.nettix_details_bar_big_ul2 {
+    padding: 50px 0px 40px 0px;
+    font-size: 21px;
+}
+
+ul.nettix_details_bar_big_ul li,
+ul.nettix_details_bar_big_ul2 li,
+ul.nettix_details_bar_small_ul li {
+    float: left;
+}
+
+ul.nettix_details_bar_big_ul li:first-child,
+ul.nettix_details_bar_big_ul2 li:first-child,
+ul.nettix_details_bar_small_ul li:first-child {
+    list-style-type: none; 
+    margin-left: 0px;
+}
+
+/* Range*/
+
+.wb_counter_input_range {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%; 
+    height: 25px; 
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7; 
+    -webkit-transition: .2s; 
+    transition: opacity .2s;
+}
+
+.wb_counter_input_range::-webkit-slider-thumb {
+    -webkit-appearance: none; 
+    appearance: none;
+    width: 25px; 
+    height: 25px; 
+    background: #4CAF50; 
+    cursor: pointer; 
+}
+  
+.wb_counter_input_range::-moz-range-thumb {
+    width: 25px; 
+    height: 25px; 
+    background: #4CAF50; 
+    cursor: pointer; 
+}
+
+@media(max-width: 600px) {
+    .nettix_thumb img {
+		width: 100% !important;
+        max-height: 60px !important;
+    }
+}
+
+@media(max-width: 390px) {
+    .nettix_thumb img {
+		width: 100% !important;
+        max-height: 120px !important;
+    }
+}
+
+/*
+.nettix_vehicle_content .slick-slider,
+.nettix_vehicle_content .slick-slider img {
+	max-height: 500px !important;
+}
+
+.nettix_vehicle_content .slider-nav {
+	margin-top: 10px;
+	max-height: 180px !important;
+}
+
+.nettix_vehicle_content .slick-arrow {
+	margin-top: -20px;
+}
+
+.nettix_vehicles_thumb img { 
+	height: 120px !important;
+	width: auto !important;
+}
+
+@media(max-width: 1050px) {
+	.nettix_hakutulokset_wrap h1 ,
+    .nettix_hakutulokset_wrap h2 {
+	    font-size: 18px !important;
+    }
+	
+    .nettix_vehicle_content .slick-arrow {
+        margin-top: 0px;
+    }
+	
+    .nettix_vehicle_content .slick-slider,
+    .nettix_vehicle_content .slick-slider img {
+        max-height: 300px !important;
+    }
+	
+    .nettix_vehicles_thumb img { 
+        height: 60px !important;
+        width: auto !important;
+    }
+}
+
+@media(max-width: 468px) {
+	.nettix_vehicles_thumb img { 
+        height: 30px !important;
+        width: auto !important;
+    }
+	
+    .nettix_phone,
+    .nettix_contact {
+		font-size: 14px !important;
+	}
+	
+	.nettix_vehicle_content .slick-slider,
+    .nettix_vehicle_content .slick-slider img {
+        max-height: 200px !important;
+    }
+}
+*/
