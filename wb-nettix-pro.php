@@ -1,13 +1,13 @@
 <?php
 /*
  * Plugin Name: WordPress Nettix Pro
- * Version: 1.3.19
+ * Version: 1.3.20
  * Plugin URI: https://webbisivut.org/
  * Description: WordPress Nettix Pro lisäosa
  * Author: Webbisivut.org
  * Author URI: https://webbisivut.org/
  * Requires at least: 4.0
- * Tested up to: 5.4.2
+ * Tested up to: 5.5.4
  *
  * Text Domain: wb-nettix-pro
  * Domain Path: /lang/
@@ -38,6 +38,7 @@ $nettix_cpt = esc_attr(get_option('nettix_cpt'));
 if($nettix_cpt == 'kylla') {
 	WB_Nettix_Pro()->register_post_type( 'nettix_ajoneuvot', __( 'Nettix ajoneuvot', 'wb-nettix-pro' ), __( 'Nettix ajoneuvot', 'wb-nettix-pro' ) );
 
+	// Voidaan luoda taxonomyt tarvittaessa, lisäämällä rivit teeman functions.php tiedostoon:
 	//WB_Nettix_Pro()->register_taxonomy( 'autot', __( 'Autot', 'wb-nettix-pro' ), __( 'Autot', 'wb-nettix-pro' ), 'nettix_ajoneuvot' );
 	//WB_Nettix_Pro()->register_taxonomy( 'motot', __( 'Motot', 'wb-nettix-pro' ), __( 'Motot', 'wb-nettix-pro' ), 'nettix_ajoneuvot' );
 }
@@ -150,6 +151,8 @@ function newToken() {
 	return $token;
 }
 
+// Ajoneuvot temppiin
+// https://api.nettix.fi/rest/car/search-count?isMyFavorite=false&sortOrder=price&userId=12345&adType=forsale&includeMakeModel=true&accessoriesCondition=and&undrivenVehicle=false&coSeater=false&isPriced=true&taxFree=false&vatDeduct=true
 function nettixGetToken() {
 	$api = esc_attr(get_option('nettix_palvelin'));
 	$token = newToken();
@@ -192,9 +195,9 @@ function nettixGetToken() {
 					}
 
 					if($api == 'tuotanto') {
-						$uri3_1 = 'https://api.nettix.fi/rest/car/search-count?isMyFavorite=false&sortOrder=' . $jarjestys . '&userId=' . $id . '&adType=forsale&includeMakeModel=true&accessoriesCondition=and&undrivenVehicle=false&coSeater=false&isPriced=true&taxFree=false&vatDeduct=true';
+						$uri3_1 = 'https://api.nettix.fi/rest/car/search-count?isMyFavorite=false&sortOrder=' . $jarjestys . '&userId=' . $id . '&adType=forsale';
 					} else {
-						$uri3_1 = 'https://api-test.nettix.fi/rest/car/search-count?isMyFavorite=false&sortOrder=' . $jarjestys . '&userId=' . $id . '&adType=forsale&includeMakeModel=true&accessoriesCondition=and&undrivenVehicle=false&coSeater=false&isPriced=true&taxFree=false&vatDeduct=true';
+						$uri3_1 = 'https://api-test.nettix.fi/rest/car/search-count?isMyFavorite=false&sortOrder=' . $jarjestys . '&userId=' . $id . '&adType=forsale';
 					}
 
 					$ch3_1 = curl_init();
@@ -285,9 +288,9 @@ function nettixGetToken() {
 					}
 
 					if($api == 'tuotanto') {
-						$uri3_1 = 'https://api.nettix.fi/rest/bike/search-count?isMyFavorite=false&sortOrder=' . $jarjestys . '&userId=' . $id . '&adType=forsale&includeMakeModel=true&accessoriesCondition=and&undrivenVehicle=false&coSeater=false&isPriced=true&taxFree=false&vatDeduct=true';
+						$uri3_1 = 'https://api.nettix.fi/rest/bike/search-count?isMyFavorite=false&sortOrder=' . $jarjestys . '&userId=' . $id . '&adType=forsale';
 					} else {
-						$uri3_1 = 'https://api-test.nettix.fi/rest/bike/search-count?isMyFavorite=false&sortOrder=' . $jarjestys . '&userId=' . $id . '&adType=forsale&includeMakeModel=true&accessoriesCondition=and&undrivenVehicle=false&coSeater=false&isPriced=true&taxFree=false&vatDeduct=true';
+						$uri3_1 = 'https://api-test.nettix.fi/rest/bike/search-count?isMyFavorite=false&sortOrder=' . $jarjestys . '&userId=' . $id . '&adType=forsale';
 					}
 
 					$ch3_1 = curl_init();
