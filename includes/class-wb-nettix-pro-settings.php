@@ -460,6 +460,14 @@ class WB_Nettix_Pro_Settings {
 					'type'			=> 'select',
 					'options'		=> array('ei' => 'Ei', 'kylla' => 'Kyllä'),
 					'default'		=> 'kylla'
+				),				
+				array(
+					'id' 			=> 'laskuri',
+					'label'			=> __( 'Laskuri', 'wb-nettix-pro' ),
+					'description'	=> __( 'Valitse haluatko tämän vimpaimen näkyvän kohteen tiedoissa.', 'wb-nettix-pro' ),
+					'type'			=> 'select',
+					'options'		=> array('ei' => 'Ei', 'kylla' => 'Kyllä'),
+					'default'		=> 'ei'
 				),
 				array(
 					'id' 			=> 'lisatiedot',
@@ -492,6 +500,14 @@ class WB_Nettix_Pro_Settings {
 					'type'			=> 'select',
 					'options'		=> array('ei' => 'Ei', 'kylla' => 'Kyllä'),
 					'default'		=> 'kylla'
+				),
+				array(
+					'id' 			=> 'laskurin_korko',
+					'label'			=> __( 'Laskurin korko' , 'wb-nettix-pro' ),
+					'description'	=> __( 'Valitse millä korolla kk-laskuri laskee', 'wb-nettix-pro' ),
+					'type'			=> 'text',
+					'default'		=> '3.9',
+					'placeholder'	=> ''
 				),
 				array(
 					'id' 			=> 'mainosteksti',

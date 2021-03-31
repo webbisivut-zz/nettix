@@ -105,6 +105,33 @@ function wb_nettix_styles_dynamic() {
 			background: <?php echo $paavari1; ?>;
 		}
 
+		/* Range*/
+		.wb_counter_input_range {
+			background: <?php echo $tausta; ?>;
+		}
+
+		.wb_counter_input_range::-webkit-slider-thumb {
+			background: <?php echo $paavari1; ?>; 
+		}
+		
+		.wb_counter_input_range::-moz-range-thumb {
+			background: <?php echo $paavari1; ?>; 
+		}
+		
+		#wb_counted_wrap {
+			background: <?php echo $paavari2; ?>;
+		}
+
+		select.wb_laina_aika,
+		input.wb_counter_input {
+			background: <?php echo $tausta; ?>;
+		}
+
+		input.wb_counter_button {
+			color: <?php echo $tausta; ?>;
+			background: <?php echo $painikkeet1; ?>;
+		}
+
 		<?php if($kohteen_varjostus == 'kylla') { ?>
 			.nettix_vehicle {
 				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

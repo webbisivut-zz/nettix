@@ -6,7 +6,7 @@
                     <p v-if="this.$parent.lang == ''">Ajoneuvotyyppi</p>
                     <p v-else-if="this.$parent.lang == 'en'">Type</p>
                     <select id="ajoneuvotyyppi" @change="$parent.haeAjoneuvotjaTallennaAsetukset()" class="nettix_select">
-                        <option v-for="ajoneuvo in this.$parent.asetukset.rajapinnat" v-bind:value="ajoneuvo">
+                        <option v-for="ajoneuvo in this.$parent.asetukset.rajapinnat" :key="ajoneuvo">
                             {{ ajoneuvo }}
                         </option>
                     </select>
@@ -18,7 +18,7 @@
                           <option v-if="this.$parent.lang == ''" value="">Kaikki</option>
                           <option v-else-if="this.$parent.lang == 'en'" value="">All</option>
 
-                          <option v-for="ajoneuvolaji in this.$parent.ajoneuvolajit" v-bind:value="ajoneuvolaji.id">
+                          <option v-for="ajoneuvolaji in this.$parent.ajoneuvolajit" :key="ajoneuvolaji.id">
                               {{ ajoneuvolaji.name }}
                           </option>
                       </select>
@@ -30,7 +30,7 @@
                         <option v-if="this.$parent.lang == ''" value="">Kaikki</option>
                         <option v-else-if="this.$parent.lang == 'en'" value="">All</option>
 
-                        <option v-for="merkki in this.$parent.merkit" v-bind:value="merkki.id">
+                        <option v-for="merkki in this.$parent.merkit" :key="merkki.id">
                             {{ merkki.name }}
                         </option>
                     </select>
@@ -42,7 +42,7 @@
                         <option v-if="this.$parent.lang == ''" value="">Kaikki</option>
                         <option v-else-if="this.$parent.lang == 'en'" value="">All</option>
                         
-                        <option v-for="malli in this.$parent.mallit" v-bind:value="malli.id">
+                        <option v-for="malli in this.$parent.mallit" :key="malli.id">
                             {{ malli.name }}
                         </option>
                     </select>
@@ -59,7 +59,7 @@
                     <p v-else-if="this.$parent.lang == 'en'">Kilometers from</p>
                     <select id="kilometrit_alkaen" class="nettix_select">
                         <option value=""></option>
-                        <option v-for="kilometri in this.kilometritArr" v-bind:value="kilometri">
+                        <option v-for="kilometri in this.kilometritArr" :key="kilometri">
                             {{ kilometri }} km
                         </option>
                     </select>
@@ -69,7 +69,7 @@
                     <p v-else-if="this.$parent.lang == 'en'">Kilometers to</p>
                     <select id="kilometrit_paattyen" class="nettix_select">
                         <option value=""></option>
-                        <option v-for="kilometri in this.kilometritArr" v-bind:value="kilometri">
+                        <option v-for="kilometri in this.kilometritArr" :key="kilometri">
                             {{ kilometri }} km
                         </option>
                     </select>
@@ -90,7 +90,7 @@
                     <p v-else-if="this.$parent.lang == 'en'">Volume from</p>
                     <select id="tilavuus_alkaen" class="nettix_select">
                         <option value=""></option>
-                        <option v-for="tilavuus in this.tilavuusArr" v-bind:value="tilavuus">
+                        <option v-for="tilavuus in this.tilavuusArr" :key="tilavuus">
                             {{ tilavuus }} cm3
                         </option>
                     </select>
@@ -100,7 +100,7 @@
                     <p v-else-if="this.$parent.lang == 'en'">Volume to</p>
                     <select id="tilavuus_paattyen" class="nettix_select">
                         <option value=""></option>
-                        <option v-for="tilavuus in this.tilavuusArr" v-bind:value="tilavuus">
+                        <option v-for="tilavuus in this.tilavuusArr" :key="tilavuus">
                             {{ tilavuus }} cm3
                         </option>
                     </select>
@@ -110,7 +110,7 @@
                     <p v-else-if="this.$parent.lang == 'en'">Year from</p>
                     <select id="vuosimalli_alkaen" class="nettix_select">
                         <option value=""></option>
-                        <option v-for="vuosi in this.yearArr" v-bind:value="vuosi">
+                        <option v-for="vuosi in this.yearArr" :key="vuosi">
                             {{ vuosi }}
                         </option>
                     </select>
@@ -120,7 +120,7 @@
                     <p v-else-if="this.$parent.lang == 'en'">Year to</p>
                     <select id="vuosimalli_paattyen" class="nettix_select">
                         <option value=""></option>
-                        <option v-for="vuosi in this.yearArr" v-bind:value="vuosi">
+                        <option v-for="vuosi in this.yearArr" :key="vuosi">
                             {{ vuosi }}
                         </option>
                     </select>
@@ -131,13 +131,13 @@
 
                     <select v-if="this.$parent.lang == ''" id="kaupunki" class="nettix_select">
                         <option value="">Kaikki</option>
-                        <option v-for="kaupunki in this.$parent.paikkakunnat" v-bind:value="kaupunki.id">
+                        <option v-for="kaupunki in this.$parent.paikkakunnat" :key="kaupunki.id">
                             {{ kaupunki.name }}
                         </option>
                     </select>
                     <select v-else-if="this.$parent.lang == 'en'" id="kaupunki" class="nettix_select">
                         <option value="">All</option>
-                        <option v-for="kaupunki in this.$parent.paikkakunnat" v-bind:value="kaupunki.id">
+                        <option v-for="kaupunki in this.$parent.paikkakunnat" :key="kaupunki.id">
                             {{ kaupunki.name }}
                         </option>
                     </select>
@@ -148,13 +148,13 @@
 
                     <select v-if="this.$parent.lang == ''" id="maakunta" class="nettix_select">
                         <option value="">Kaikki</option>
-                        <option v-for="maakunta in this.$parent.maakunnat" v-bind:value="maakunta.id">
+                        <option v-for="maakunta in this.$parent.maakunnat" :key="maakunta.id">
                             {{ maakunta.name }}
                         </option>
                     </select>
                     <select v-else-if="this.$parent.lang == 'en'" id="maakunta" class="nettix_select">
                         <option value="">All</option>
-                        <option v-for="maakunta in this.$parent.maakunnat" v-bind:value="maakunta.id">
+                        <option v-for="maakunta in this.$parent.maakunnat" :key="maakunta.id">
                             {{ maakunta.name }}
                         </option>
                     </select>
@@ -216,6 +216,7 @@
 
                 var data = {
                     'action': 'getModels',
+                    'security': wb_nettixAdminAjax.security,
                     'sendData': sendDataAjax
                 }
 

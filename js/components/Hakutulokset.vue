@@ -17,8 +17,8 @@
             </div>
         </div>
        <div class="container-fluid">
-            <div class="row" v-for="i in Math.ceil($parent.ajoneuvot.length / 3)">
-                <div class="wb-md-4" v-for="vehicle in $parent.ajoneuvot.slice((i - 1) * 3, i * 3)">
+            <div class="row" v-for="i in Math.ceil($parent.ajoneuvot.length / 3)" :key="i">
+                <div class="wb-md-4" v-for="vehicle in $parent.ajoneuvot.slice((i - 1) * 3, i * 3)" :key="vehicle.make">
                     <div v-if="$parent.asetukset.teema == 'teema1'" class="nettix_vehicle">
                         <div @click="additionalInfo(vehicle.id)" v-scroll-to="'#nettix_hakutulokset_tag'" class="nettix_img" :style="imagestyles(typeof vehicle.images[0] === 'undefined' || vehicle.images[0] === null ? $parent.defaultImg : vehicle.images[0].medium['url'])">
                         </div>
@@ -80,7 +80,7 @@
                             @lazyLoadError="handleLazeLoadError">
                         -->
                             <slick ref="slick" :options="slickOptions">
-                                <div class="nettix_pagination" v-scroll-to="'#nettix_hakutulokset_tag'" v-for="i in this.vehiclesPaginated" :class="{ nettix_selected : $parent.pagenumber == i }" @click="$parent.changePage(i)">
+                                <div class="nettix_pagination" v-scroll-to="'#nettix_hakutulokset_tag'" v-for="i in this.vehiclesPaginated" :key="i" :class="{ nettix_selected : $parent.pagenumber == i }" @click="$parent.changePage(i)">
                                     {{ i }}
                                 </div>
                             </slick>
@@ -152,47 +152,10 @@
                 this.$refs.slick.prev();
             },
             reInit() {
-                // Helpful if you have to deal with v-for to update dynamic lists
                 this.$nextTick(() => {
                     this.$refs.slick.reSlick();
                 });
             },
-            // Events listeners
-            /*
-            handleAfterChange(event, slick, currentSlide) {
-                console.log('handleAfterChange', event, slick, currentSlide);
-            },
-            handleBeforeChange(event, slick, currentSlide, nextSlide) {
-                console.log('handleBeforeChange', event, slick, currentSlide, nextSlide);
-            },
-            handleBreakpoint(event, slick, breakpoint) {
-                console.log('handleBreakpoint', event, slick, breakpoint);
-            },
-            handleDestroy(event, slick) {
-                console.log('handleDestroy', event, slick);
-            },
-            handleEdge(event, slick, direction) {
-                console.log('handleEdge', event, slick, direction);
-            },
-            handleInit(event, slick) {
-                console.log('handleInit', event, slick);
-            },
-            handleReInit(event, slick) {
-                console.log('handleReInit', event, slick);
-            },
-            handleSetPosition(event, slick) {
-                console.log('handleSetPosition', event, slick);
-            },
-            handleSwipe(event, slick, direction) {
-                console.log('handleSwipe', event, slick, direction);
-            },
-            handleLazyLoaded(event, slick, image, imageSource) {
-                console.log('handleLazyLoaded', event, slick, image, imageSource);
-            },
-            handleLazeLoadError(event, slick, image, imageSource) {
-                console.log('handleLazeLoadError', event, slick, image, imageSource);
-            },
-            */
         }
     }
 

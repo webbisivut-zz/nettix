@@ -193,16 +193,13 @@ class WB_Nettix_Pro {
 		wp_register_script( $this->_token . '-lightbox', esc_url( $this->assets_url ) . 'js/lightbox.min.js', array( 'jquery' ), $this->_version );
 		wp_enqueue_script( $this->_token . '-lightbox' );
 
-		//wp_register_script( $this->_token . '-lightbox', esc_url( $this->assets_url ) . 'js/lightbox-plus-jquery.min.js', array( 'jquery' ), $this->_version );
-		//wp_enqueue_script( $this->_token . '-lightbox' );
-
 		wp_register_script( $this->_token . '-bundle', esc_url( $this->assets_url2 ) . 'bundle.js', array( 'jquery' ), $this->_version );
 		wp_enqueue_script( $this->_token . '-bundle' );
 
 		$nettix_url = array( 'site_url' => get_bloginfo('url') );
    		wp_localize_script( $this->_token . '-bundle', 'vue_url', $nettix_url );
 
-		wp_localize_script( $this->_token . '-bundle', 'wb_nettixAdminAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' )));
+		wp_localize_script( $this->_token . '-bundle', 'wb_nettixAdminAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'security'  => wp_create_nonce( 'nettix-security-nonce' ) ));
 
 	} // End enqueue_scripts ()
 

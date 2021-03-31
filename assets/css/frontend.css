@@ -252,7 +252,6 @@ a.nettix_contact {
 }
 
 /* Shortcode */
-#nettix_laskuri,
 #nettix_lang,
 #nettix_view,
 #nettix_singleid,
@@ -318,7 +317,6 @@ ul.nettix_details_bar_small_ul li:first-child {
 }
 
 /* Range*/
-
 .wb_counter_input_range {
     -webkit-appearance: none;
     appearance: none;
@@ -347,6 +345,49 @@ ul.nettix_details_bar_small_ul li:first-child {
     cursor: pointer; 
 }
 
+.wb_nettix_calculator {
+    width: 100%;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+#wb_counted_wrap {
+    background: #fff;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.wb_counter_title {
+    font-weight: 600;
+    margin: 0px 0px 10px 0px;
+}
+
+p.wb_counter_input {
+    font-weight: 600;
+}
+
+select.wb_laina_aika,
+input.wb_counter_input {
+    width: 100%;
+    background: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    margin-bottom: 0px;
+}
+
+select.wb_laina_aika {
+    padding: 10px;
+}
+
+input.wb_counter_button {
+    width: 100%;
+    padding: 15px 20px;
+    color: #fff;
+    border: 0;
+    border-radius: 3px;
+    background: #218900;
+}
+
 @media(max-width: 600px) {
     .nettix_thumb img {
 		width: 100% !important;
@@ -360,62 +401,3 @@ ul.nettix_details_bar_small_ul li:first-child {
         max-height: 120px !important;
     }
 }
-
-/*
-.nettix_vehicle_content .slick-slider,
-.nettix_vehicle_content .slick-slider img {
-	max-height: 500px !important;
-}
-
-.nettix_vehicle_content .slider-nav {
-	margin-top: 10px;
-	max-height: 180px !important;
-}
-
-.nettix_vehicle_content .slick-arrow {
-	margin-top: -20px;
-}
-
-.nettix_vehicles_thumb img { 
-	height: 120px !important;
-	width: auto !important;
-}
-
-@media(max-width: 1050px) {
-	.nettix_hakutulokset_wrap h1 ,
-    .nettix_hakutulokset_wrap h2 {
-	    font-size: 18px !important;
-    }
-	
-    .nettix_vehicle_content .slick-arrow {
-        margin-top: 0px;
-    }
-	
-    .nettix_vehicle_content .slick-slider,
-    .nettix_vehicle_content .slick-slider img {
-        max-height: 300px !important;
-    }
-	
-    .nettix_vehicles_thumb img { 
-        height: 60px !important;
-        width: auto !important;
-    }
-}
-
-@media(max-width: 468px) {
-	.nettix_vehicles_thumb img { 
-        height: 30px !important;
-        width: auto !important;
-    }
-	
-    .nettix_phone,
-    .nettix_contact {
-		font-size: 14px !important;
-	}
-	
-	.nettix_vehicle_content .slick-slider,
-    .nettix_vehicle_content .slick-slider img {
-        max-height: 200px !important;
-    }
-}
-*/

@@ -1,5 +1,5 @@
 <template>
-  <div class="wb_nettix_calculator" v-if="this.laskuriActivated">
+  <div class="wb_nettix_calculator">
     <div id="wb_counter_wrap">
         <h3>Rahoituslaskuri</h3>
 
@@ -39,7 +39,6 @@ export default {
   data() {
     return {
       haeKkEra: '',
-      laskuriActivated: false,
       perustamismaksu: 200,
       tilinhoitomaksu: 9,
       euribor: 3,
@@ -54,23 +53,21 @@ export default {
     }
   },
   created: function() {
-      var getLaskuriActivated = document.getElementById('nettix_laskuri').innerHTML;
-      
-      if(getLaskuriActivated == '579094ec01ec13ea9a8a61072610c617') {
-          this.laskuriActivated = true;
-      }
-
       this.getVehiclePrice();
   },
   methods: {
     getVehiclePrice() {
-      if(typeof this.$parent.$parent != 'undefined' && typeof this.$parent.$parent.vehicleDetails != 'undefined' && this.$parent.$parent.vehicleDetails.price != '' && this.$parent.$parent.vehicleDetails.price != null) {
+      if(this.$parent.$parent && this.$parent.$parent.vehicleDetails.price) {
         this.wb_counter_price = this.$parent.$parent.vehicleDetails.price;
 
         this.wb_counter_kasiraha = Math.ceil(this.wb_counter_price / 3);
-
-        this.lopullinenLaskelma();
       }
+      
+      if(this.$parent.$parent && this.$parent.$parent.asetukset.laskurin_korko) {
+        this.wb_counter_korko = this.$parent.$parent.asetukset.laskurin_korko
+      }
+
+      this.lopullinenLaskelma();
     },
     lopullinenLaskelma() {
         let hinta = this.wb_counter_price;

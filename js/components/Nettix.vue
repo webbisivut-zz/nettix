@@ -143,6 +143,7 @@
 
                 var data = {
                     'action': 'getSettings',
+                    'security': wb_nettixAdminAjax.security,
                     'sendData': ''
                 };
 
@@ -215,6 +216,7 @@
 
                     var data = {
                         'action': 'getVehicles',
+                        'security': wb_nettixAdminAjax.security,
                         'sendData': sendDataAjax
                     }
 
@@ -357,6 +359,7 @@
 
                 var data = {
                     'action': 'getAjoneuvolajit',
+                    'security': wb_nettixAdminAjax.security,
                     'sendData': sendDataAjax
                 }
 
@@ -397,6 +400,7 @@
 
                 var data = {
                     'action': 'loadVehicleSingle',
+                    'security': wb_nettixAdminAjax.security,
                     'sendData': sendDataAjax
                 }
                 
@@ -572,6 +576,7 @@
 
                 var data = {
                     'action': 'getVehiclesSearch',
+                    'security': wb_nettixAdminAjax.security,
                     'sendData': sendDataAjax
                 };
 
@@ -711,6 +716,7 @@
 
                 var data = {
                     'action': 'getVehicleDetails',
+                    'security': wb_nettixAdminAjax.security,
                     'sendData': sendDataAjax
                 }
 
