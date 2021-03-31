@@ -12,7 +12,9 @@ class WB_Nettix_Pro_Admin_Ajax {
 	 */
 	public function __construct () {
 		add_action( 'wp_ajax_nopriv_sendMail', array($this, 'wb_nettix_sendMail' ));
-		add_action( 'wp_ajax_sendMail', array($this, 'wb_nettix_sendMail' ));
+		add_action( 'wp_ajax_sendMail', array($this, 'wb_nettix_sendMail' ));		
+		add_action( 'wp_ajax_nopriv_sendMailVehicleInfo', array($this, 'wb_nettix_sendMailVehicleInfo' ));
+		add_action( 'wp_ajax_sendMailVehicleInfo', array($this, 'wb_nettix_sendMailVehicleInfo' ));
 		add_action( 'wp_ajax_nopriv_loadVehicleSingle', array($this, 'wb_nettix_loadVehicleSingle' ));
 		add_action( 'wp_ajax_loadVehicleSingle', array($this, 'wb_nettix_loadVehicleSingle' ));
 		add_action( 'wp_ajax_nopriv_getVehicles', array($this, 'wb_nettix_getVehicles' ));
@@ -59,6 +61,190 @@ class WB_Nettix_Pro_Admin_Ajax {
 
 		$headers[] = 'From:' . $nettix_contact_nimi . ' <' . $nettix_contact_email . '>';
 		$headers[] = 'Content-Type: text/html; charset=UTF-8';
+
+		wp_mail( $to, $subject, $nettix_contact_viesti, $headers );
+
+		echo 'Viesti lähetetty!';
+		wp_die();
+	}
+
+	/**
+	 * Send vehicle details by email
+	 * @since   1.0.0
+	 * @return  void
+	 */
+	public function wb_nettix_sendMailVehicleInfo() {
+		if ( ! check_ajax_referer( 'nettix-security-nonce', 'security', false ) ) {	
+			wp_send_json_error( 'Invalid security token sent.' );	    
+			wp_die();	  
+		}
+
+		$data = esc_js($_POST['sendData']);
+		$dataArr = json_decode(str_replace('&quot;', '"', $data));
+
+		$lang = sanitize_email($dataArr->{'lang'});
+		
+		$to = sanitize_email($dataArr->{'nettix_contact_email'});
+		$subject = 'Ajoneuvon tiedot';
+
+		$vehicle_details = $dataArr->{'nettix_vehicle_details'};
+
+		if(isset($vehicle_details->description)) {
+			$description = sanitize_text_field($vehicle_details->description);
+		} else {
+			$description = '';
+		}
+
+		if(isset($vehicle_details->make)) {
+			$make = sanitize_text_field($vehicle_details->make);
+		} else {
+			$make = '';
+		}
+
+		if(isset($vehicle_details->model)) {
+			$model = sanitize_text_field($vehicle_details->model);
+		} else {
+			$model = '';
+		}
+
+		if(isset($vehicle_details->year)) {
+			$year = sanitize_text_field($vehicle_details->year);
+		} else {
+			$year = '';
+		}
+
+		if(isset($vehicle_details->price)) {
+			$price = sanitize_text_field($vehicle_details->price);
+		} else {
+			$price = '';
+		}
+
+		if(isset($vehicle_details->bikeType)) {
+			$bikeType = sanitize_text_field($vehicle_details->bikeType);
+		} else {
+			$bikeType = '';
+		}
+
+		if(isset($vehicle_details->bodyType)) {
+			$bodyType = sanitize_text_field($vehicle_details->bodyType);
+		} else {
+			$bodyType = '';
+		}
+
+		if(isset($vehicle_details->color)) {
+			$color = sanitize_text_field($vehicle_details->color);
+		} else {
+			$color = '';
+		}
+
+		if(isset($vehicle_details->colorType)) {
+			$colorType = sanitize_text_field($vehicle_details->colorType);
+		} else {
+			$colorType = '';
+		}
+
+		if(isset($vehicle_details->fuelType)) {
+			$fuelType = sanitize_text_field($vehicle_details->fuelType);
+		} else {
+			$fuelType = '';
+		}
+
+		if(isset($vehicle_details->driveType)) {
+			$driveType = sanitize_text_field($vehicle_details->driveType);
+		} else {
+			$driveType = '';
+		}
+
+		if(isset($vehicle_details->engineSize)) {
+			$engineSize = sanitize_text_field($vehicle_details->engineSize);
+		} else {
+			$engineSize = '';
+		}
+
+		if(isset($vehicle_details->totalOwners)) {
+			$totalOwners = sanitize_text_field($vehicle_details->totalOwners);
+		} else {
+			$totalOwners = '';
+		}
+
+		if(isset($vehicle_details->kilometers)) {
+			$kilometers = sanitize_text_field($vehicle_details->kilometers);
+		} else {
+			$kilometers = '';
+		}
+
+		if(isset($vehicle_details->accessories)) {
+			$accessories = $vehicle_details->accessories;
+		} else {
+			$accessories = '';
+		}
+
+		if($lang == 'en') {
+			$vehicle_details_str = 'Description: ' . $description . '<br>';
+			$vehicle_details_str .= 'Make: ' . $make . '<br>';
+			$vehicle_details_str .= 'Model: ' . $model . '<br>';
+			$vehicle_details_str .= 'Year: ' . $year . '<br>';
+			$vehicle_details_str .= 'Price: ' . $price . '<br>';
+			
+			if($bikeType) {
+				$vehicle_details_str .= 'Type: ' . $bikeType . '<br>';
+			}
+			
+			$vehicle_details_str .= 'Type / Additional info: ' . $bodyType . '<br>';
+			$vehicle_details_str .= 'Color: ' . $color . '<br>';
+			$vehicle_details_str .= 'Color type: ' . $colorType . '<br>';
+			$vehicle_details_str .= 'Fuel type: ' . $fuelType . '<br>';
+			$vehicle_details_str .= 'Traction: ' . $driveType . '<br>';
+			$vehicle_details_str .= 'Engine capacity: ' . $engineSize . '<br>';
+			$vehicle_details_str .= 'Total owners: ' . $totalOwners . '<br>';
+			$vehicle_details_str .= 'Mileage: ' . $kilometers . '<br>';
+
+			if($accessories) {
+				$vehicle_details_str .= 'Accessories: ' . '<br>';
+
+				foreach($accessories as $acc) {
+					$vehicle_details_str .= $acc->en . '<br>';
+				}
+			}
+			
+		} else {
+			$vehicle_details_str = 'Kuvaus: ' . $description . '<br>';
+			$vehicle_details_str .= 'Merkki: ' . $make . '<br>';
+			$vehicle_details_str .= 'Malli: ' . $model . '<br>';
+			$vehicle_details_str .= 'Vuosimalli: ' . $year . '<br>';
+			$vehicle_details_str .= 'Hinta: ' . $price . '<br>';
+			
+			if($bikeType) {
+				$vehicle_details_str .= 'Tyyppi: ' . $bikeType . '<br>';
+			}
+			
+			$vehicle_details_str .= 'Tyyppi / Lisätietoja: ' . $bikeType . '<br>';
+			$vehicle_details_str .= 'Väri: ' . $color . '<br>';
+			$vehicle_details_str .= 'Värin tyyppi: ' . $colorType . '<br>';
+			$vehicle_details_str .= 'Polttoaine: ' . $fuelType . '<br>';
+			$vehicle_details_str .= 'Vetotapa: ' . $driveType . '<br>';
+			$vehicle_details_str .= 'Moottorin tilavuus: ' . $engineSize . '<br>';
+			$vehicle_details_str .= 'Omistajien lukumäärä: ' . $totalOwners . '<br>';
+			$vehicle_details_str .= 'Mittarilukema: ' . $kilometers . '<br>';
+
+			if($accessories) {
+				foreach($accessories as $acc) {
+					$vehicle_details_str .= 'Lisävarusteet: ' . '<br>';
+
+					$vehicle_details_str .= $acc->fi . '<br>';
+				}
+			}
+		}
+
+		
+
+		$nettix_contact_nimi = esc_attr(get_option('nettix_yrityksen_nimi'));
+		$nettix_contact_email = esc_attr(get_option('nettix_yrityksen_email'));
+
+		$headers[] = 'From:' . $nettix_contact_nimi . ' <' . $nettix_contact_email . '>';
+		$headers[] = 'Content-Type: text/html; charset=UTF-8';
+
+		$nettix_contact_viesti = '';
 
 		wp_mail( $to, $subject, $nettix_contact_viesti, $headers );
 
@@ -276,7 +462,7 @@ class WB_Nettix_Pro_Admin_Ajax {
 	 * @since   1.0.0
 	 * @return  JSON
 	 */
-	public function wb_nettix_getVehicleDetails() {
+	public static function wb_nettix_getVehicleDetails() {
 		if ( ! check_ajax_referer( 'nettix-security-nonce', 'security', false ) ) {	
 			wp_send_json_error( 'Invalid security token sent.' );	    
 			wp_die();	  
@@ -305,7 +491,7 @@ class WB_Nettix_Pro_Admin_Ajax {
 		$token = file_get_contents(nettix_temp . '/token.txt');
 
 		if(!$token) {
-			$token = newToken();
+			$token = WB_Nettix_Functions::newToken();
 		}
 
 		$ch = curl_init();
@@ -375,6 +561,7 @@ class WB_Nettix_Pro_Admin_Ajax {
 		$mainos = esc_attr(get_option('nettix_mainos'));
 		$lisatiedot = esc_attr(get_option('nettix_lisatiedot'));
 		$viesti = esc_attr(get_option('nettix_viesti'));
+		$tiedot_email = esc_attr(get_option('nettix_tiedot_email'));
 		$sijainti = esc_attr(get_option('nettix_sijainti'));
 		$mainosteksti = esc_attr(get_option('nettix_mainosteksti'));
 		$mainos_linkki = esc_attr(get_option('nettix_mainos_linkki'));
@@ -425,6 +612,7 @@ class WB_Nettix_Pro_Admin_Ajax {
 			'cpt' => $cpt,
 			'laskuri' => $laskuri,
 			'laskurin_korko' => $laskurin_korko,
+			'tiedot_email' => $tiedot_email,
 		);
 
 		echo json_encode($arr);
@@ -436,7 +624,7 @@ class WB_Nettix_Pro_Admin_Ajax {
 	 * @since   1.0.0
 	 * @return  JSON
 	 */
-	public function wb_nettix_getVehiclesSearch() {
+	public static function wb_nettix_getVehiclesSearch() {
 		if ( ! check_ajax_referer( 'nettix-security-nonce', 'security', false ) ) {	
 			wp_send_json_error( 'Invalid security token sent.' );	    
 			wp_die();	  
@@ -538,7 +726,7 @@ class WB_Nettix_Pro_Admin_Ajax {
 				$token = file_get_contents(nettix_temp . '/token.txt');
 
 				if(!$token) {
-					$token = newToken();
+					$token = WB_Nettix_Functions::newToken();
 				}
 
 				$ch = curl_init();

@@ -82,7 +82,7 @@ class WB_Nettix_Functions {
 	 * @since 	1.0.0
      * @return string
 	 */
-    public function newToken() {
+    public static function newToken() {
         $api = esc_attr(get_option('nettix_palvelin'));
         $client_id = esc_attr(get_option('nettix_tunnus'));
         $client_secret = esc_attr(get_option('nettix_salasana'));
@@ -126,7 +126,7 @@ class WB_Nettix_Functions {
 	 */
     public static function nettixGetToken() {
         $api = esc_attr(get_option('nettix_palvelin'));
-        $token = $this->newToken();
+        $token = WB_Nettix_Functions::newToken();
 
         $token_temp_file = fopen(nettix_temp . '/token.txt', 'w');
         fwrite($token_temp_file, $token);

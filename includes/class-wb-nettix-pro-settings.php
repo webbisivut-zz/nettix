@@ -478,6 +478,14 @@ class WB_Nettix_Pro_Settings {
 					'default'		=> 'kylla'
 				),
 				array(
+					'id' 			=> 'tiedot_email',
+					'label'			=> __( 'Ajoneuvon tiedot sähköpostiin', 'wb-nettix-pro' ),
+					'description'	=> __( 'Valitse haluatko tämän vimpaimen näkyvän kohteen tiedoissa.', 'wb-nettix-pro' ),
+					'type'			=> 'select',
+					'options'		=> array('ei' => 'Ei', 'kylla' => 'Kyllä'),
+					'default'		=> 'ei'
+				),				
+				array(
 					'id' 			=> 'viesti',
 					'label'			=> __( 'Viesti', 'wb-nettix-pro' ),
 					'description'	=> __( 'Valitse haluatko tämän vimpaimen näkyvän kohteen tiedoissa.', 'wb-nettix-pro' ),

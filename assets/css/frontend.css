@@ -210,6 +210,7 @@ a.nettix_contact {
     text-decoration: none !important;
 }
 
+#nettix_kiitos_viestista_tiedot_email,
 #nettix_kiitos_viestista {
     padding: 5px;
     border: 3px solid #5ca300;
@@ -221,12 +222,14 @@ a.nettix_contact {
     cursor: not-allowed !important;
 }
 
+#nettix_viesti_errors_email_address,
 #nettix_viesti_errors {
     margin: 10px 0px;
     padding: 5px;
     border: 5px solid #ff0000;
 }
 
+#nettix_viesti_errors_email_address,
 #nettix_viesti_errors,
 #nettix_virhe_nimi,
 #nettix_virhe_email,

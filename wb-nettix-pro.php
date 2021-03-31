@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: WordPress Nettix Pro
- * Version: 1.3.20
+ * Version: 1.4
  * Plugin URI: https://webbisivut.org/
  * Description: WordPress Nettix Pro lisäosa
  * Author: Webbisivut.org

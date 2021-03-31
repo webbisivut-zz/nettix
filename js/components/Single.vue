@@ -98,6 +98,27 @@
                         <a v-if="this.$parent.lang == ''" style="text-decoration: none;" :href="this.$parent.asetukset.mainos_linkki"><div id="nettix_haku_btn">Pyydä lisätietoja!</div></a>
                         <a v-else-if="this.$parent.lang == 'en'" style="text-decoration: none;" :href="this.$parent.asetukset.mainos_linkki"><div id="nettix_haku_btn">Ask for more info!</div></a>
                     </div>
+                    <div id="nettix_tiedot_email" class="nettix_sidebar" v-if="this.$parent.asetukset.tiedot_email == 'kylla'">
+                        <h3 v-if="this.$parent.lang == ''">Tilaa ajoneuvon tiedot sähköpostiin:</h3>
+                        <h3 v-else-if="this.$parent.lang == 'en'">Get vehicle info to your email:</h3>
+                        
+                        <input v-if="this.$parent.lang == ''" id="nettix_tiedot_email_address" class="nettix_input" type="text" placeholder="Sähköposti*">
+                        <input v-else-if="this.$parent.lang == 'en'" id="nettix_tiedot_email_address" class="nettix_input" type="text" placeholder="Email*">
+                        <input id="nettix_contact_phone_tiedot_email" class="nettix_input" type="hidden">
+
+                        <div id="nettix_viesti_errors_email_address">
+                            <p v-if="this.$parent.lang == ''">Viestin lähetys ei onnistunut seuraavien virheiden takia:</p>
+                            <p v-else-if="this.$parent.lang == 'en'">Message could not be delivered because of the following errors:</p>
+                            
+                            <div v-if="this.$parent.lang == ''" id="nettix_virhe_email_address">Sähköposti on virheellinen.</div>
+                            <div v-else-if="this.$parent.lang == ''" id="nettix_virhe_email_address">Error in email field.</div>
+                        </div>
+
+                        <div @click="nettixTiedotEmail()" id="nettix_haku_btn" :class="this.odottaa_lahetysta_tiedot ? 'btn_nettix_odottaa' : ''">{{ this.laheta_nettix_tiedot }}</div>
+                        
+                        <div v-if="this.$parent.lang == ''" id="nettix_kiitos_viestista_tiedot_email">Tiedot lähetetty onnistuneesti!</div>
+                        <div v-else-if="this.$parent.lang == 'eb'" id="nettix_kiitos_viestista_tiedot_email">Vehicle information has been delivered succesfully!</div>
+                    </div>
                     <div id="nettix_yhteydenotto_lomake" class="nettix_sidebar" v-if="this.$parent.asetukset.lisatiedot == 'kylla'">
                         <h3 v-if="this.$parent.lang == ''">Kysy lisätietoja:</h3>
                         <h3 v-else-if="this.$parent.lang == 'en'">For more info:</h3>
@@ -144,7 +165,7 @@
                         <div @click="nettixContact()" id="nettix_haku_btn" :class="this.odottaa_lahetysta ? 'btn_nettix_odottaa' : ''">{{ this.laheta_nettix }}</div>
                         
                         <div v-if="this.$parent.lang == ''" id="nettix_kiitos_viestista">Viesti lähetetty onnistuneesti!</div>
-                        <div v-else-if="this.$parent.lang == ''" id="nettix_kiitos_viestista">Message has been delivered succesfully!</div>
+                        <div v-else-if="this.$parent.lang == 'en'" id="nettix_kiitos_viestista">Message has been delivered succesfully!</div>
                     </div>
                     <div id="nettix_sijainti" class="nettix_sidebar" v-if="this.$parent.asetukset.sijainti == 'kylla'">
                         <h3 v-if="this.$parent.lang == ''">Sijainti</h3>
@@ -269,7 +290,9 @@
                     ]
                 },
                 laheta_nettix: 'Lähetä',
+                laheta_nettix_tiedot: 'Lähetä',
                 odottaa_lahetysta: false,
+                odottaa_lahetysta_tiedot: false,
                 currentUrl: window.location.href,
                 encodedurl: '',
                 vehicleData: '',
@@ -277,30 +300,11 @@
             }
         },
         head: {
-            // To use "this" in the component, it is necessary to return the object through a function
             title: function () {
                 return {
                     inner: this.vehicleData
                 }
             },
-            /*
-            meta: function () {
-                return [
-                    { name: 'description', content: this.vehicleData, id: 'desc' },
-
-                    // Twitter
-                    { name: 'twitter:title', content: this.vehicleData },
-
-                    // Google+ / Schema.org
-                    { itemprop: 'name', content: this.vehicleData },
-                    { itemprop: 'description', content: this.vehicleData },
-
-                    // Facebook / Open Graph
-                    { property: 'og:title', content: this.vehicleData },
-                    { property: 'og:image', content: this.vehicleImg },
-                ]
-            },
-            */
         },
 
         beforeUpdate() {
@@ -382,8 +386,10 @@
 
                 if(this.$parent.lang == 'en') {
                     this.laheta_nettix = 'Send'
+                    this.laheta_nettix_tiedot = 'Send'
                 } else {
                     this.laheta_nettix = 'Lähetä'
+                    this.laheta_nettix_tiedot = 'Lähetä'
                 }
             },
             isEmail(email) {
@@ -405,7 +411,6 @@
                 }
             },
             nettixContact() {
-                // Piilotetaan error viestit
                 var error = false
 
                 document.getElementById('nettix_viesti_errors').style.display = 'none'
@@ -504,6 +509,85 @@
 
                             setTimeout(function(){
                                 document.getElementById('nettix_kiitos_viestista').style.display = 'none'
+                            }, 3000)
+                        }).catch(function (error) {
+                        console.log(error)
+                    });
+                }
+            },
+            nettixTiedotEmail() {
+                var error = false
+
+                document.getElementById('nettix_viesti_errors_email_address').style.display = 'none'
+
+                var obj = {}
+                var nettix_contact_email = document.getElementById('nettix_tiedot_email_address').value
+                var getUrl = window.location.href;
+
+                // Hunajakannu
+                var nettix_contact_phone = document.getElementById('nettix_contact_phone_tiedot_email').value
+
+                var isemailcorrect = this.isEmail(nettix_contact_email)
+                var isphonecorrect = this.isPhone(nettix_contact_puhelin)
+
+                if(nettix_contact_nimi == '') {
+                    error = true
+
+                    document.getElementById('nettix_viesti_errors_email_address').style.display = 'block'
+                    document.getElementById('nettix_virhe_email_address').style.display = 'block'
+                }
+
+                if(nettix_contact_email == '' || !isemailcorrect) {
+                    error = true
+
+                    document.getElementById('nettix_viesti_errors_email_address').style.display = 'block'
+                    document.getElementById('nettix_virhe_email_address').style.display = 'block'
+                }
+
+                if(!error) {
+                    obj['nettix_contact_email'] = nettix_contact_email
+                    obj['nettix_vehicle_details'] = this.$parent.vehicleDetails
+                    obj['lang'] = this.$parent.lang
+
+                    var sendDataAjax = JSON.stringify(obj);
+
+                    var data = {
+                        'action': 'sendMailVehicleInfo',
+                        'security': wb_nettixAdminAjax.security,
+                        'sendData': sendDataAjax
+                    }
+                    
+                    var vm = this;
+
+                    var url = wb_nettixAdminAjax.ajaxurl
+                    this.odottaa_lahetysta_tiedot = true
+                    
+                    if(this.lang == 'en') {
+                        this.laheta_nettix_tiedot = 'Please wait...'
+                    } else {
+                        this.laheta_nettix_tiedot = 'Odota hetki...'
+                    }
+
+                    axios.post(url, Qs.stringify(data))
+                        .then(function (response) {
+                            vm.odottaa_lahetysta_tiedot = false
+
+                            if(vm.$parent.asetukset.ga == 'kylla' && typeof ga != 'undefined') {
+                                ga('send', 'event', 'Nettix ajoneuvojen tiedot', 'Ajoneuvojen tiedot kenttä', vm.currentUrl)
+                            }
+
+                            if(vm.lang == 'en') {
+                                vm.laheta_nettix_tiedot = 'Send'
+                            } else {
+                                vm.laheta_nettix_tiedot = 'Lähetä'
+                            }
+
+                            document.getElementById('nettix_kiitos_viestista_tiedot_email').style.display = 'block'
+
+                            document.getElementById('nettix_tiedot_email_address').value = ''
+
+                            setTimeout(function(){
+                                document.getElementById('nettix_kiitos_viestista_tiedot_email').style.display = 'none'
                             }, 3000)
                         }).catch(function (error) {
                         console.log(error)
