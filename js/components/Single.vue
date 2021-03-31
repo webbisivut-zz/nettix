@@ -191,22 +191,22 @@
 
                             <!-- Facebook -->
                             <a :href="'http://www.facebook.com/sharer.php?u=' + this.encodedurl" target="_blank">
-                                <img :src="this.$parent.siteurl + '/wp-content/plugins/wb-nettix/assets/images/facebook.png'" alt="Facebook" />
+                                <img :src="this.$parent.siteurl + '/wp-content/plugins/wb-nettix/dist/images/facebook.png'" alt="Facebook" />
                             </a>
 
                             <!-- Google+ -->
                             <a :href="'https://plus.google.com/share?url=' + this.encodedurl" target="_blank">
-                                <img :src="this.$parent.siteurl + '/wp-content/plugins/wb-nettix/assets/images/google.png'" alt="Google" />
+                                <img :src="this.$parent.siteurl + '/wp-content/plugins/wb-nettix/dist/images/google.png'" alt="Google" />
                             </a>
 
                             <!-- LinkedIn -->
                             <a :href="'http://www.linkedin.com/shareArticle?mini=true&amp;url=' + this.encodedurl" target="_blank">
-                                <img :src="this.$parent.siteurl + '/wp-content/plugins/wb-nettix/assets/images/linkedin.png'" alt="LinkedIn" />
+                                <img :src="this.$parent.siteurl + '/wp-content/plugins/wb-nettix/dist/images/linkedin.png'" alt="LinkedIn" />
                             </a>
 
                             <!-- Twitter -->
                             <a class="twitter-share-button" data-size="large" :href="'https://twitter.com/intent/tweet?url=' + this.encodedurl" target="_blank">
-                                <img :src="this.$parent.siteurl + '/wp-content/plugins/wb-nettix/assets/images/twitter.png'" alt="Twitter" />
+                                <img :src="this.$parent.siteurl + '/wp-content/plugins/wb-nettix/dist/images/twitter.png'" alt="Twitter" />
                             </a>
 
                         </div>

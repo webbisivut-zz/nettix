@@ -67,7 +67,7 @@ class WB_Nettix_Pro_Settings {
 	 * @return void
 	 */
 	public function add_menu_item () {
-		$page = add_menu_page( __( 'Nettix', 'wb-nettix-pro' ) , __( 'Nettix', 'wb-nettix-pro' ) , 'manage_options' , $this->parent->_token . '_settings' ,  array( $this, 'settings_page' ), plugin_dir_url( __FILE__ ) . '../assets/img/nettix.png' );
+		$page = add_menu_page( __( 'Nettix', 'wb-nettix-pro' ) , __( 'Nettix', 'wb-nettix-pro' ) , 'manage_options' , $this->parent->_token . '_settings' ,  array( $this, 'settings_page' ), plugin_dir_url( __FILE__ ) . '../dist/img/nettix.png' );
 
 		add_action( 'admin_print_styles-' . $page, array( $this, 'settings_assets' ) );
 	}

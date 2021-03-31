@@ -41,7 +41,7 @@
                 lang: '',
                 cpt: 'false',
                 siteurl: vue_url.site_url,
-                defaultImg: vue_url.site_url + '/wp-content/plugins/wb-nettix/assets/img/no-photo-available.png',
+                defaultImg: vue_url.site_url + '/wp-content/plugins/wb-nettix/dist/img/no-photo-available.png',
             }
         },
         created: function () {
