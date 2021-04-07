@@ -88,7 +88,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="wb-md-4" v-if="this.$parent.asetukset.mainos == 'kylla' || this.$parent.asetukset.lisatiedot == 'kylla' || this.$parent.asetukset.viesti == 'kylla' || this.$parent.asetukset.sijainti == 'kylla'">
+                <div class="wb-md-4" v-if="this.$parent.asetukset.mainos == 'kylla' || this.$parent.asetukset.lisatiedot == 'kylla' || this.$parent.asetukset.viesti == 'kylla' || this.$parent.asetukset.sijainti == 'kylla' || this.$parent.asetukset.tiedot_email == 'kylla' || this.$parent.asetukset.laskuri == 'kylla'">
                     <div id="nettix_laskuri" class="nettix_sidebar" v-if="this.$parent.asetukset.laskuri == 'kylla'">
                         <Laskuri></Laskuri>
                     </div>
@@ -528,14 +528,6 @@
                 var nettix_contact_phone = document.getElementById('nettix_contact_phone_tiedot_email').value
 
                 var isemailcorrect = this.isEmail(nettix_contact_email)
-                var isphonecorrect = this.isPhone(nettix_contact_puhelin)
-
-                if(nettix_contact_nimi == '') {
-                    error = true
-
-                    document.getElementById('nettix_viesti_errors_email_address').style.display = 'block'
-                    document.getElementById('nettix_virhe_email_address').style.display = 'block'
-                }
 
                 if(nettix_contact_email == '' || !isemailcorrect) {
                     error = true
@@ -545,9 +537,38 @@
                 }
 
                 if(!error) {
+                    var description = JSON.stringify(this.$parent.vehicleDetails.description);
+                    description = description.replace(/"/g, '');
+
                     obj['nettix_contact_email'] = nettix_contact_email
-                    obj['nettix_vehicle_details'] = this.$parent.vehicleDetails
+                    obj['make'] = this.$parent.vehicleDetails.make.name
+                    obj['model'] = this.$parent.vehicleDetails.model.name
+
+                    obj['description'] = description
+                   
+                    obj['year'] = this.$parent.vehicleDetails.year
+                    obj['price'] = this.$parent.vehicleDetails.price
+
+                    if(this.$parent.vehicleDetails.bikeType) {
+                        obj['bikeType'] = this.$parent.vehicleDetails.bikeType
+                    } else {
+                        obj['bikeType'] = ''
+                    }
+                    
+                    obj['bodyType'] = this.$parent.vehicleDetails.bodyType
+                    obj['color'] = this.$parent.vehicleDetails.color
+                    obj['colorType'] = this.$parent.vehicleDetails.colorType
+                    
+                    obj['fuelType'] = this.$parent.vehicleDetails.fuelType
+                    obj['driveType'] = this.$parent.vehicleDetails.driveType
+                    obj['engineSize'] = this.$parent.vehicleDetails.engineSize
+                    obj['totalOwners'] = this.$parent.vehicleDetails.totalOwners
+                    obj['kilometers'] = this.$parent.vehicleDetails.kilometers
+                     
+                    obj['accessories'] = this.$parent.vehicleDetails.accessories
+                    
                     obj['lang'] = this.$parent.lang
+                    
 
                     var sendDataAjax = JSON.stringify(obj);
 
@@ -556,7 +577,7 @@
                         'security': wb_nettixAdminAjax.security,
                         'sendData': sendDataAjax
                     }
-                    
+
                     var vm = this;
 
                     var url = wb_nettixAdminAjax.ajaxurl

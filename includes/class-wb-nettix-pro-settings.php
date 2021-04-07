@@ -459,7 +459,7 @@ class WB_Nettix_Pro_Settings {
 					'description'	=> __( 'Valitse haluatko tämän vimpaimen näkyvän kohteen tiedoissa.', 'wb-nettix-pro' ),
 					'type'			=> 'select',
 					'options'		=> array('ei' => 'Ei', 'kylla' => 'Kyllä'),
-					'default'		=> 'kylla'
+					'default'		=> 'ei'
 				),				
 				array(
 					'id' 			=> 'laskuri',
@@ -475,7 +475,7 @@ class WB_Nettix_Pro_Settings {
 					'description'	=> __( 'Valitse haluatko tämän vimpaimen näkyvän kohteen tiedoissa.', 'wb-nettix-pro' ),
 					'type'			=> 'select',
 					'options'		=> array('ei' => 'Ei', 'kylla' => 'Kyllä'),
-					'default'		=> 'kylla'
+					'default'		=> 'ei'
 				),
 				array(
 					'id' 			=> 'tiedot_email',
@@ -491,7 +491,7 @@ class WB_Nettix_Pro_Settings {
 					'description'	=> __( 'Valitse haluatko tämän vimpaimen näkyvän kohteen tiedoissa.', 'wb-nettix-pro' ),
 					'type'			=> 'select',
 					'options'		=> array('ei' => 'Ei', 'kylla' => 'Kyllä'),
-					'default'		=> 'kylla'
+					'default'		=> 'ei'
 				),
 				array(
 					'id' 			=> 'sijainti',
@@ -499,7 +499,7 @@ class WB_Nettix_Pro_Settings {
 					'description'	=> __( 'Valitse haluatko tämän vimpaimen näkyvän kohteen tiedoissa.', 'wb-nettix-pro' ),
 					'type'			=> 'select',
 					'options'		=> array('ei' => 'Ei', 'kylla' => 'Kyllä'),
-					'default'		=> 'kylla'
+					'default'		=> 'ei'
 				),
 				array(
 					'id' 			=> 'jakonapit',
@@ -507,7 +507,7 @@ class WB_Nettix_Pro_Settings {
 					'description'	=> __( 'Valitse haluatko tämän vimpaimen näkyvän kohteen tiedoissa.', 'wb-nettix-pro' ),
 					'type'			=> 'select',
 					'options'		=> array('ei' => 'Ei', 'kylla' => 'Kyllä'),
-					'default'		=> 'kylla'
+					'default'		=> 'ei'
 				),
 				array(
 					'id' 			=> 'laskurin_korko',
@@ -546,7 +546,7 @@ class WB_Nettix_Pro_Settings {
 					'label'			=> __( 'Google maps upotuskoodi' , 'wb-nettix-pro' ),
 					'description'	=> __( 'Aseta yrityksen Google Maps upotuskoodi tähän. Upotuskoodin voi hakea osoitteesta <a href="https://maps.google.fi/" target="_blank">https://maps.google.fi/</a>', 'wb-nettix-pro' ),
 					'type'			=> 'textarea',
-					'default'		=> 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254499.81410724166!2d24.738506515349638!3d60.10986783680985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46920bc796210691%3A0xcd4ebd843be2f763!2sHelsinki%2C+Suomi!5e0!3m2!1sfi!2sth!4v1544434220025',
+					'default'		=> '',
 					'placeholder'	=> 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254499.81410724166!2d24.738506515349638!3d60.10986783680985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46920bc796210691%3A0xcd4ebd843be2f763!2sHelsinki%2C+Suomi!5e0!3m2!1sfi!2sth!4v1544434220025'
 				),
 				array(
@@ -562,7 +562,7 @@ class WB_Nettix_Pro_Settings {
 					'label'			=> __( 'Vaihtoehtoinen Google maps upotuskoodi' , 'wb-nettix-pro' ),
 					'description'	=> __( 'Aseta yrityksen Vaihtoehtoinen Google Maps upotuskoodi tähän. Upotuskoodin voi hakea osoitteesta <a href="https://maps.google.fi/" target="_blank">https://maps.google.fi/</a>', 'wb-nettix-pro' ),
 					'type'			=> 'textarea',
-					'default'		=> 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254499.81410724166!2d24.738506515349638!3d60.10986783680985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46920bc796210691%3A0xcd4ebd843be2f763!2sHelsinki%2C+Suomi!5e0!3m2!1sfi!2sth!4v1544434220025',
+					'default'		=> '',
 					'placeholder'	=> 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254499.81410724166!2d24.738506515349638!3d60.10986783680985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46920bc796210691%3A0xcd4ebd843be2f763!2sHelsinki%2C+Suomi!5e0!3m2!1sfi!2sth!4v1544434220025'
 				),
 				array(

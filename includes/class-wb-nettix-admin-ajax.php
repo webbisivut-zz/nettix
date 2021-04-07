@@ -53,7 +53,7 @@ class WB_Nettix_Pro_Admin_Ajax {
 		$nettix_contact_nimi = sanitize_text_field($dataArr->{'nettix_contact_nimi'});
 		$nettix_contact_email = sanitize_email($dataArr->{'nettix_contact_email'});
 		$nettix_contact_puhelin = sanitize_text_field($dataArr->{'nettix_contact_puhelin'});
-		$nettix_contact_url = sanitize_url($dataArr->{'nettix_contact_url'});
+		$nettix_contact_url = esc_url_raw($dataArr->{'nettix_contact_url'});
 		$nettix_contact_viesti = str_replace('\n', '<br>', 'Lähettäjä: ' . $nettix_contact_nimi . '<br>' . 'Sähköposti: ' . $nettix_contact_email . '<br>' . 'Puhelin: ' . $nettix_contact_puhelin . '<br>' . 'Ajoneuvon url: ' . $nettix_contact_url . '<br>' . 'Viesti: ' . $dataArr->{'nettix_contact_viesti'});
 
 		$to = esc_attr(get_option('nettix_viesti_email'));
@@ -83,104 +83,131 @@ class WB_Nettix_Pro_Admin_Ajax {
 		$dataArr = json_decode(str_replace('&quot;', '"', $data));
 
 		$lang = sanitize_email($dataArr->{'lang'});
-		
+
 		$to = sanitize_email($dataArr->{'nettix_contact_email'});
 		$subject = 'Ajoneuvon tiedot';
 
-		$vehicle_details = $dataArr->{'nettix_vehicle_details'};
-
-		if(isset($vehicle_details->description)) {
-			$description = sanitize_text_field($vehicle_details->description);
+		if(isset($dataArr->description)) {
+			$description = sanitize_text_field($dataArr->description);
+			$description = str_replace('\\\\n', '<br>', $description);
 		} else {
 			$description = '';
 		}
 
-		if(isset($vehicle_details->make)) {
-			$make = sanitize_text_field($vehicle_details->make);
+		if(isset($dataArr->make)) {
+			$make = sanitize_text_field($dataArr->make->name);
 		} else {
 			$make = '';
 		}
 
-		if(isset($vehicle_details->model)) {
-			$model = sanitize_text_field($vehicle_details->model);
+		if(isset($dataArr->model)) {
+			$model = sanitize_text_field($dataArr->model->name);
 		} else {
 			$model = '';
 		}
 
-		if(isset($vehicle_details->year)) {
-			$year = sanitize_text_field($vehicle_details->year);
+		if(isset($dataArr->year)) {
+			$year = sanitize_text_field($dataArr->year);
 		} else {
 			$year = '';
 		}
 
-		if(isset($vehicle_details->price)) {
-			$price = sanitize_text_field($vehicle_details->price);
+		if(isset($dataArr->price)) {
+			$price = sanitize_text_field($dataArr->price);
 		} else {
 			$price = '';
 		}
 
-		if(isset($vehicle_details->bikeType)) {
-			$bikeType = sanitize_text_field($vehicle_details->bikeType);
+		if(isset($dataArr->bikeType)) {
+			if($lang == 'en') {
+				$bikeType = sanitize_text_field($dataArr->bikeType->en);
+			} else {
+				$bikeType = sanitize_text_field($dataArr->bikeType->fi);
+			}
 		} else {
 			$bikeType = '';
 		}
 
-		if(isset($vehicle_details->bodyType)) {
-			$bodyType = sanitize_text_field($vehicle_details->bodyType);
+		if(isset($dataArr->bodyType)) {
+			if($lang == 'en') {
+				$bodyType = sanitize_text_field($dataArr->bodyType->en);
+			} else {
+				$bodyType = sanitize_text_field($dataArr->bodyType->fi);
+			}
 		} else {
 			$bodyType = '';
 		}
 
-		if(isset($vehicle_details->color)) {
-			$color = sanitize_text_field($vehicle_details->color);
+		if(isset($dataArr->color)) {
+			if($lang == 'en') {
+				$color = sanitize_text_field($dataArr->color->en);
+			} else {
+				$color = sanitize_text_field($dataArr->color->fi);
+			}
 		} else {
 			$color = '';
 		}
 
-		if(isset($vehicle_details->colorType)) {
-			$colorType = sanitize_text_field($vehicle_details->colorType);
+		if(isset($dataArr->colorType)) {
+			if($lang == 'en') {
+				$colorType = sanitize_text_field($dataArr->colorType->en);
+			} else {
+				$colorType = sanitize_text_field($dataArr->colorType->fi);
+			}
 		} else {
 			$colorType = '';
 		}
 
-		if(isset($vehicle_details->fuelType)) {
-			$fuelType = sanitize_text_field($vehicle_details->fuelType);
+		if(isset($dataArr->fuelType)) {
+			if($lang == 'en') {
+				$fuelType = sanitize_text_field($dataArr->fuelType->en);
+			} else {
+				$fuelType = sanitize_text_field($dataArr->fuelType->fi);
+			}
 		} else {
 			$fuelType = '';
 		}
 
-		if(isset($vehicle_details->driveType)) {
-			$driveType = sanitize_text_field($vehicle_details->driveType);
+		if(isset($dataArr->driveType)) {
+			if($lang == 'en') {
+				$driveType = sanitize_text_field($dataArr->driveType->en);
+			} else {
+				$driveType = sanitize_text_field($dataArr->driveType->fi);
+			}
 		} else {
 			$driveType = '';
 		}
 
-		if(isset($vehicle_details->engineSize)) {
-			$engineSize = sanitize_text_field($vehicle_details->engineSize);
+		if(isset($dataArr->engineSize)) {
+			$engineSize = sanitize_text_field($dataArr->engineSize);
 		} else {
 			$engineSize = '';
 		}
 
-		if(isset($vehicle_details->totalOwners)) {
-			$totalOwners = sanitize_text_field($vehicle_details->totalOwners);
+		if(isset($dataArr->totalOwners)) {
+			$totalOwners = sanitize_text_field($dataArr->totalOwners);
 		} else {
 			$totalOwners = '';
 		}
 
-		if(isset($vehicle_details->kilometers)) {
-			$kilometers = sanitize_text_field($vehicle_details->kilometers);
+		if(isset($dataArr->kilometers)) {
+			$kilometers = sanitize_text_field($dataArr->kilometers);
 		} else {
 			$kilometers = '';
 		}
 
-		if(isset($vehicle_details->accessories)) {
-			$accessories = $vehicle_details->accessories;
+		if(isset($dataArr->accessories)) {
+			$accessories = $dataArr->accessories;
 		} else {
 			$accessories = '';
 		}
 
+		$nettix_contact_nimi = esc_attr(get_option('nettix_yrityksen_nimi'));
+		$nettix_contact_email = esc_attr(get_option('nettix_yrityksen_email'));
+
 		if($lang == 'en') {
-			$vehicle_details_str = 'Description: ' . $description . '<br>';
+			$vehicle_details_str = 'Vehicle information from ' . $nettix_contact_nimi . '<br><br>';
+			$vehicle_details_str .= 'Description: ' . $description . '<br>';
 			$vehicle_details_str .= 'Make: ' . $make . '<br>';
 			$vehicle_details_str .= 'Model: ' . $model . '<br>';
 			$vehicle_details_str .= 'Year: ' . $year . '<br>';
@@ -200,15 +227,16 @@ class WB_Nettix_Pro_Admin_Ajax {
 			$vehicle_details_str .= 'Mileage: ' . $kilometers . '<br>';
 
 			if($accessories) {
-				$vehicle_details_str .= 'Accessories: ' . '<br>';
+				$vehicle_details_str .= '<br>' . 'Accessories: ' . '<br>';
 
 				foreach($accessories as $acc) {
-					$vehicle_details_str .= $acc->en . '<br>';
+					$vehicle_details_str .= '- ' . $acc->en . '<br>';
 				}
 			}
 			
 		} else {
-			$vehicle_details_str = 'Kuvaus: ' . $description . '<br>';
+			$vehicle_details_str = 'Ajoneuvon tiedot sivustolta: ' . $nettix_contact_nimi . '<br><br>';
+			$vehicle_details_str .= 'Kuvaus: ' . $description . '<br>';
 			$vehicle_details_str .= 'Merkki: ' . $make . '<br>';
 			$vehicle_details_str .= 'Malli: ' . $model . '<br>';
 			$vehicle_details_str .= 'Vuosimalli: ' . $year . '<br>';
@@ -228,25 +256,17 @@ class WB_Nettix_Pro_Admin_Ajax {
 			$vehicle_details_str .= 'Mittarilukema: ' . $kilometers . '<br>';
 
 			if($accessories) {
+				$vehicle_details_str .= '<br>' . 'Lisävarusteet: ' . '<br>';
 				foreach($accessories as $acc) {
-					$vehicle_details_str .= 'Lisävarusteet: ' . '<br>';
-
-					$vehicle_details_str .= $acc->fi . '<br>';
+					$vehicle_details_str .= '- ' . $acc->fi . '<br>';
 				}
 			}
 		}
 
-		
-
-		$nettix_contact_nimi = esc_attr(get_option('nettix_yrityksen_nimi'));
-		$nettix_contact_email = esc_attr(get_option('nettix_yrityksen_email'));
-
 		$headers[] = 'From:' . $nettix_contact_nimi . ' <' . $nettix_contact_email . '>';
 		$headers[] = 'Content-Type: text/html; charset=UTF-8';
 
-		$nettix_contact_viesti = '';
-
-		wp_mail( $to, $subject, $nettix_contact_viesti, $headers );
+		$sendMail = wp_mail( $to, $subject, $vehicle_details_str, $headers );
 
 		echo 'Viesti lähetetty!';
 		wp_die();

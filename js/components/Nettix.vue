@@ -610,7 +610,6 @@
                         }
 
                         vm.ajoneuvot = []
-                        // Rajoitetaan hakutulosten määrää - tulikettu alkaa muuten käymään kuumana. Onko tähän parempaa ratkaisua?
 
                         if(totalVehicles > 10000) {
                             vm.vehiclesPaginated = 200
