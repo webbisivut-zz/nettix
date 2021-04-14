@@ -63,22 +63,6 @@
             <div class="row" :class="{ hide_pagination : this.vehiclesPaginated <= 1 }">
                 <div class="wb-md-12">
                     <div class="nettix_slick_wrap">
-                        <!--
-                        <slick
-                            ref="slick"
-                            :options="slickOptions"
-                            @afterChange="handleAfterChange"
-                            @beforeChange="handleBeforeChange"
-                            @breakpoint="handleBreakpoint"
-                            @destroy="handleDestroy"
-                            @edge="handleEdge"
-                            @init="handleInit"
-                            @reInit="handleReInit"
-                            @setPosition="handleSetPosition"
-                            @swipe="handleSwipe"
-                            @lazyLoaded="handleLazyLoaded"
-                            @lazyLoadError="handleLazeLoadError">
-                        -->
                             <slick ref="slick" :options="slickOptions">
                                 <div class="nettix_pagination" v-scroll-to="'#nettix_hakutulokset_tag'" v-for="i in this.vehiclesPaginated" :key="i" :class="{ nettix_selected : $parent.pagenumber == i }" @click="$parent.changePage(i)">
                                     {{ i }}

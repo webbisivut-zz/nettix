@@ -3,7 +3,7 @@
         <div id="nettix_loader" class="nettix_loader" v-if="this.loader">
             <div class="nettix_spinner" v-if="this.loader"></div>
         </div>
-        <hakukone v-if="view == 'multiple'"></hakukone>
+        <hakukone v-if="view == 'multiple' && showSearch"></hakukone>
         <hakutulokset v-if="view == 'multiple'"></hakutulokset>
         <single v-if="view == 'single'"></single>
     </div>
@@ -39,6 +39,7 @@
                 aloitus: 1,
                 view: '',
                 lang: '',
+                showSearch: true,
                 cpt: 'false',
                 siteurl: vue_url.site_url,
                 defaultImg: vue_url.site_url + '/wp-content/plugins/wb-nettix/dist/img/no-photo-available.png',
@@ -102,6 +103,16 @@
                     var shortcodeId = document.getElementById('nettix_singleid').innerHTML
                 } else {
                     var shortcodeId = ''
+                }
+
+                if(document.getElementById('nettix_latest')) {
+                    var latest = document.getElementById('nettix_latest').innerHTML
+                } else {
+                    var latest = ''
+                }
+
+                if(latest.length > 0) {
+                    this.showSearch = false
                 }
                 
                 // Jos löytyy ID, niin näytetään kohdetiedot. Muussa tapauksessa ladataan kaikki kohteet.
@@ -600,7 +611,18 @@
                         var arr1 = JSON.parse(response.data[0])
                         var arr2 = JSON.parse(response.data[1])
 
-                        var totalVehicles = parseInt(arr2.total)
+                        if(document.getElementById('nettix_latest')) {
+                            var latest = document.getElementById('nettix_latest').innerHTML
+                        } else {
+                            var latest = ''
+                        }
+
+                        if(latest.length > 0) {
+                            var totalVehicles = parseInt(latest)
+                        } else {
+                            totalVehicles = parseInt(arr2.total)
+                        }
+
                         vm.totalVehicles = totalVehicles
 
                         var rows = vm.asetukset.rows

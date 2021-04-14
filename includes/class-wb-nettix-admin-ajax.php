@@ -563,8 +563,9 @@ class WB_Nettix_Pro_Admin_Ajax {
 		$yrityksen_postinumero2 = esc_attr(get_option('nettix_yrityksen_postinumero2'));
 		$yrityksen_paikkakunta2 = esc_attr(get_option('nettix_yrityksen_paikkakunta2'));
 
-		// Images
+		// Single item
 		$kuvan_koko = esc_attr(get_option('nettix_kuvan_koko'));
+		$km_otsikossa = esc_attr(get_option('nettix_km_otsikossa'));
 
 		// Search
 		$pikahaku = esc_attr(get_option('nettix_pikahaku'));
@@ -633,6 +634,7 @@ class WB_Nettix_Pro_Admin_Ajax {
 			'laskuri' => $laskuri,
 			'laskurin_korko' => $laskurin_korko,
 			'tiedot_email' => $tiedot_email,
+			'km_otsikossa' => $km_otsikossa,
 		);
 
 		echo json_encode($arr);

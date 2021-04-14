@@ -471,13 +471,13 @@ class WB_Nettix_Functions {
 
         if(isset($vehicles_nettiauto) && is_array($vehicles_nettiauto)) {
             foreach($vehicles_nettiauto as $vehicle) {
-                $this->generateNettixVehicle($vehicle, 'Autot');
+                WB_Nettix_Functions::generateNettixVehicle($vehicle, 'Autot');
             }
         }
 
         if(isset($vehicles_nettimoto) && is_array($vehicles_nettimoto) ) {
             foreach($vehicles_nettimoto as $vehicle) {
-                $this->generateNettixVehicle($vehicle, 'Motot');
+                WB_Nettix_Functions::generateNettixVehicle($vehicle, 'Motot');
             }
         }
         
@@ -512,7 +512,7 @@ class WB_Nettix_Functions {
 	 * @since 	1.0.0
      * @return void
 	 */
-    public function generateNettixVehicle($vehicle, $category) {
+    public static function generateNettixVehicle($vehicle, $category) {
         global $wpdb;
         $post_id = $wpdb->get_var( $wpdb->prepare( "SELECT post_id FROM $wpdb->postmeta WHERE meta_value= %d", $vehicle->id ));
 
@@ -579,7 +579,7 @@ class WB_Nettix_Functions {
                 add_post_meta($post_id, 'nettix_ajoneuvo_id', $vehicle->id, true);
                 add_post_meta($post_id, 'nettix_ajoneuvo_tyyppi', $category, true);
 
-                $this->generateFeaturedImage( $vehicle->images[0]->large->url, $post_id );
+                WB_Nettix_Functions::generateFeaturedImage( $vehicle->images[0]->large->url, $post_id );
 
                 $generated_post = get_post( $post_id );
                 wp_update_post( $generated_post );
@@ -630,7 +630,7 @@ class WB_Nettix_Functions {
 	 * @since 	1.0.0
      * @return void
 	 */
-    public function generateFeaturedImage( $image_url, $post_id  ) {
+    public static function generateFeaturedImage( $image_url, $post_id  ) {
         $upload_dir = wp_upload_dir();
         $image_data = file_get_contents($image_url);
         $filename = basename($image_url);

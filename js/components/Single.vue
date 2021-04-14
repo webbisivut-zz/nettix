@@ -4,26 +4,30 @@
             <div class="row">
                 <div :class="this.$parent.asetukset.mainos == 'kylla' || this.$parent.asetukset.lisatiedot == 'kylla' || this.$parent.asetukset.viesti == 'kylla' || this.$parent.asetukset.sijainti == 'kylla' ? 'wb-md-8' : 'wb-md-12'">
                     <div class="nettix_vehicle_title">
-                        <h1> {{ $parent.vehicleDetails.make === null || typeof $parent.vehicleDetails.make === 'undefined' ? '' : $parent.vehicleDetails.make.name }} {{ $parent.vehicleDetails.model === null || typeof $parent.vehicleDetails.model === 'undefined' ? '' : $parent.vehicleDetails.model.name }} {{ $parent.vehicleDetails.modelType === null || typeof $parent.vehicleDetails.modelType === 'undefined' ? '' : $parent.vehicleDetails.modelType.name }} vm {{ $parent.vehicleDetails.year === null || typeof $parent.vehicleDetails.year === 'undefined' ? '' : $parent.vehicleDetails.year }}, {{ $parent.vehicleDetails.price === null || typeof $parent.vehicleDetails.price === 'undefined' ? '' : $parent.vehicleDetails.price }}€</h1>
-                        <h2> {{ $parent.vehicleDetails.modelTypeName === null || typeof $parent.vehicleDetails.modelTypeName === 'undefined' ? '' : $parent.vehicleDetails.modelTypeName }}</h2>
+                        <h1> {{ $parent.vehicleDetails.make === null || typeof $parent.vehicleDetails.make === 'undefined' ? '' : $parent.vehicleDetails.make.name }} {{ $parent.vehicleDetails.model === null || typeof $parent.vehicleDetails.model === 'undefined' ? '' : $parent.vehicleDetails.model.name }} {{ $parent.vehicleDetails.modelType === null || typeof $parent.vehicleDetails.modelType === 'undefined' ? '' : $parent.vehicleDetails.modelType.name }} vm {{ $parent.vehicleDetails.year === null || typeof $parent.vehicleDetails.year === 'undefined' ? '' : $parent.vehicleDetails.year }}, {{ $parent.vehicleDetails.price === null || typeof $parent.vehicleDetails.price === 'undefined' ? '' : $parent.vehicleDetails.price }}€{{ $parent.asetukset.km_otsikossa == 'kylla' ? ', ' + $parent.vehicleDetails.kilometers + 'km' : ''}}</h1>
+                        <h2> {{ $parent.vehicleDetails.modelTypeName === null || typeof $parent.vehicleDetails.modelTypeName === 'undefined' ? '' : $parent.vehicleDetails.modelTypeName }} </h2>
                     
                         <div v-if="this.$parent.lang == ''" @click="takaisin_hakutuloksiin()" class="nettix_takaisin_hakutuloksiin">&laquo; Takaisin hakutuloksiin</div>
                         <div v-else-if="this.$parent.lang == 'en'" @click="takaisin_hakutuloksiin()" class="nettix_takaisin_hakutuloksiin">&laquo; Back to search results</div>
                     </div>
 
                     <div class="nettix_vehicle_content">
-                        <slick ref="slick" :options="slickOptions" class="slider-for" v-if="$parent.vehicleDetails.images != null && $parent.vehicleDetails.images != '' && typeof $parent.vehicleDetails.images != 'undefined' && $parent.vehicleDetails.images.length > 0">
-                            <div class="main_img_wrap" v-for="i in $parent.vehicleDetails.images" :key="i.large.url">
-                                <a v-if="$parent.asetukset.kuvan_koko == 'large'" :href="i.large.url" data-lightbox="nettix_vehicles_images"><img class="large_item_img" :src="i.large.url"></a>
-                                <a v-else :href="i.large.url" data-lightbox="nettix_vehicles_images"><img class="medium_item_img" :src="i.medium.url"></a>
-                            </div>
-                        </slick>
+                        <div id="nettix_vehicle_main_img_wrap">
+                            <slick ref="slick" :options="slickOptions" class="slider-for" v-if="$parent.vehicleDetails.images != null && $parent.vehicleDetails.images != '' && typeof $parent.vehicleDetails.images != 'undefined' && $parent.vehicleDetails.images.length > 0">
+                                <div class="main_img_wrap" v-for="i in $parent.vehicleDetails.images" :key="i.large.url">
+                                    <a v-if="$parent.asetukset.kuvan_koko == 'large'" :href="i.large.url" data-lightbox="nettix_vehicles_images"><img class="large_item_img" :src="i.large.url"></a>
+                                    <a v-else :href="i.large.url" data-lightbox="nettix_vehicles_images"><img class="medium_item_img" :src="i.medium.url"></a>
+                                </div>
+                            </slick>
+                        </div>
 
-                        <slick ref="slick2" :options="slickOptions2" class="slider-nav" v-if="$parent.vehicleDetails.images != null && $parent.vehicleDetails.images != '' && typeof $parent.vehicleDetails.images != 'undefined' && $parent.vehicleDetails.images.length > 1">
-                            <div class="nettix_vehicles_thumb" v-for="i in $parent.vehicleDetails.images" :key="i.medium.url">
-                                <img style="margin: 0 auto;" :src="i.medium.url">
-                            </div>
-                        </slick>
+                        <div id="nettix_vehicle_add_img_wrap">
+                            <slick ref="slick2" :options="slickOptions2" class="slider-nav" v-if="$parent.vehicleDetails.images != null && $parent.vehicleDetails.images != '' && typeof $parent.vehicleDetails.images != 'undefined' && $parent.vehicleDetails.images.length > 1">
+                                <div class="nettix_vehicles_thumb" v-for="i in $parent.vehicleDetails.images" :key="i.medium.url">
+                                    <img style="margin: 0 auto;" :src="i.medium.url">
+                                </div>
+                            </slick>
+                        </div>
 
                         <div class="nettix_vehicle_content_details">
                             <div class="nettix_img_single" :style="imagestyles(this.$parent.defaultImg)" v-if="typeof $parent.vehicleDetails.images === 'undefined' || $parent.vehicleDetails.images.length == 0 || $parent.vehicleDetails.images === null"></div>
@@ -213,7 +217,7 @@
                     </div>
                 </div>
             </div>
-            <div class="nettix_muut_ajoneuvot_wrap">
+            <div id="nettix_muut_ajoneuvot_wrap" class="nettix_muut_ajoneuvot_wrap">
                 <div class="row">
                     <div class="wb-md-12" style="margin: 0 auto;">
                         <h2 v-if="this.$parent.lang == ''">Muita liikkeemme ajoneuvoja: </h2>

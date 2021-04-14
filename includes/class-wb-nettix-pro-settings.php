@@ -374,6 +374,14 @@ class WB_Nettix_Pro_Settings {
 					'type'			=> 'select',
 					'options'		=> array('medium' => 'Medium', 'large' => 'Large'),
 					'default'		=> 'medium'
+				),				
+				array(
+					'id' 			=> 'km_otsikossa',
+					'label'			=> __( 'Kilometrit otsikossa', 'wb-nettix-pro' ),
+					'description'	=> __( 'Näytetäänkö kilometrilukema kohteen otsikossa?', 'wb-nettix-pro' ),
+					'type'			=> 'select',
+					'options'		=> array('ei' => 'Ei', 'kylla' => 'Kyllä'),
+					'default'		=> 'ei'
 				),
 			)
 		);

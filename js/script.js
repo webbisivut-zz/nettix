@@ -7,7 +7,7 @@ window.onload = function () {
     new Vue({
         el: '#nettix',
         render: h => h(App)
-    });
+    });  
 }
 
 Vue.use(VueHead)
