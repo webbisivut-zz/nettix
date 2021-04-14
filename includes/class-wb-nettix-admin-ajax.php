@@ -94,6 +94,10 @@ class WB_Nettix_Pro_Admin_Ajax {
 			$description = '';
 		}
 
+		if($description == 'null') {
+			$description = '';
+		}
+
 		if(isset($dataArr->make)) {
 			$make = sanitize_text_field($dataArr->make->name);
 		} else {

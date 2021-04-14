@@ -545,8 +545,8 @@
                     description = description.replace(/"/g, '');
 
                     obj['nettix_contact_email'] = nettix_contact_email
-                    obj['make'] = this.$parent.vehicleDetails.make.name
-                    obj['model'] = this.$parent.vehicleDetails.model.name
+                    obj['make'] = this.$parent.vehicleDetails.make
+                    obj['model'] = this.$parent.vehicleDetails.model
 
                     obj['description'] = description
                    
