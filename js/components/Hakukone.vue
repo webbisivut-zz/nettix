@@ -235,12 +235,14 @@
                     .then(function (response) {
                         var arr = response.data
 
+                        console.log(arr)
+
                         vm.$parent.mallit = []
 
                         for(var i=0; i < arr.length; i++) {
                             if(vm.$parent.lang == 'en') {
                                 vm.$parent.mallit.push({
-                                    name: arr[i].name_en,
+                                    name: arr[i].name,
                                     id:  arr[i].id
                                 });
                             } else {

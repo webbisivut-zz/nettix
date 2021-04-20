@@ -12,6 +12,7 @@ class WB_Nettix_Functions {
         // Actions
         add_action( 'init', array($this, 'wb_nettix_get_token_on_save'));
         add_action( 'deleteOldVehicles', array($this, 'deleteOldVehicles'));
+        add_action( 'getVehiclesList', array($this, 'getVehiclesList'));
         add_action( 'nettixCptVehicles', array($this, 'nettixCptVehicles'));
         add_action( 'nettixGetToken', array($this, 'nettixGetToken'));
         add_action( 'upgrader_process_complete', array($this, 'wb_nettix_upgrate_function'), 10, 2);
@@ -22,6 +23,7 @@ class WB_Nettix_Functions {
 
         // Shortcodes
         add_shortcode( 'deleteOldVehicles', array($this, 'deleteOldVehicles'));
+        add_shortcode( 'getVehiclesList', array($this, 'getVehiclesList'));
     }
 
     /**
@@ -75,6 +77,10 @@ class WB_Nettix_Functions {
         if (!wp_next_scheduled('deleteOldVehicles') && $nettix_cpt == 'kylla') {
             wp_schedule_event(time(), 'daily', 'deleteOldVehicles');
         }
+
+        if (!wp_next_scheduled('getVehiclesList') && $nettix_cpt == 'kylla') {
+            wp_schedule_event(time(), 'daily', 'getVehiclesList');
+        }
     }
 
     /**
@@ -116,6 +122,81 @@ class WB_Nettix_Functions {
         $token = $json->access_token;
 
         return $token;
+    }
+
+    /**
+	 * Get vehicle ids from the API
+	 * @since 	1.0.0
+     * @return string
+	 */
+    public static function getVehiclesList() {
+        $api = esc_attr(get_option('nettix_palvelin'));
+        $client_id = esc_attr(get_option('nettix_tunnus'));
+        $client_secret = esc_attr(get_option('nettix_salasana'));
+
+        if($api == 'tuotanto') {
+            $uri1 = 'https://api.nettix.fi/rest/car/options/make';
+            $uri2 = 'https://api.nettix.fi/rest/bike/options/make';
+        } else {
+            $uri1 = 'https://api-test.nettix.fi/rest/car/options/make';
+            $uri2 = 'https://api-test.nettix.fi/rest/bike/options/make';
+        }
+
+        $token = WB_Nettix_Functions::newToken();
+
+        $rajapinnat = get_option('nettix_rajapinnat');
+
+        if(is_array($rajapinnat)) {
+            foreach($rajapinnat as $rajapinta) {
+                if(stristr($rajapinta, 'Autot')) {
+                    $ch = curl_init();
+
+                    $header = array();
+                    $header[] = 'accept: application/json';
+                    $header[] = 'X-Access-Token: ' . $token;
+
+                    curl_setopt($ch, CURLOPT_URL, $uri1);
+                    curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+                    $output = curl_exec($ch);
+                    curl_close($ch);
+
+                    if(file_exists(plugin_dir_path( __FILE__ ) . nettix_temp . '/car_ids.txt')) {
+                        unlink(plugin_dir_path( __FILE__ ) . nettix_temp . '/car_ids.txt');
+                    }
+
+                    $vehicles_temp_file = fopen(nettix_temp . '/car_ids.txt', 'w');
+                    fwrite($vehicles_temp_file, $output);
+                    fclose($vehicles_temp_file);
+                }
+
+                if(stristr($rajapinta, 'Motot')) {
+                    $ch = curl_init();
+
+                    $header = array();
+                    $header[] = 'accept: application/json';
+                    $header[] = 'X-Access-Token: ' . $token;
+            
+                    curl_setopt($ch, CURLOPT_URL, $uri2);
+                    curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            
+                    $output = curl_exec($ch);
+                    curl_close($ch);
+
+                    if(file_exists(plugin_dir_path( __FILE__ ) . nettix_temp . '/motorbike_ids.txt')) {
+                        unlink(plugin_dir_path( __FILE__ ) . nettix_temp . '/motorbike_ids.txt');
+                    }
+            
+                    $vehicles_temp_file = fopen(nettix_temp . '/motorbike_ids.txt', 'w');
+                    fwrite($vehicles_temp_file, $output);
+                    fclose($vehicles_temp_file);
+                }
+            }
+        }
+
+        
     }
 
     /**

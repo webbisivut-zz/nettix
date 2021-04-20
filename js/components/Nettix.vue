@@ -197,7 +197,7 @@
 
                 this.ajoneuvolajit = []
                 this.merkit = []
-                this.mallit = []
+                //this.mallit = []
 
                 this.ajoneuvotyyppi = ajoneuvotyyppi
                 this.aloitus = 1
@@ -379,7 +379,7 @@
                 var url = wb_nettixAdminAjax.ajaxurl
 
                 this.ajoneuvolajit = []
-                this.mallit = []
+                //this.mallit = []
 
                 axios.post(url, Qs.stringify(data))
                     .then(function (response) {

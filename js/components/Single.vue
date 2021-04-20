@@ -36,56 +36,56 @@
 
                             <div class="nettix_detail nettix_description">{{ $parent.vehicleDetails.description === null || typeof $parent.vehicleDetails.description === 'undefined' ? '' : $parent.vehicleDetails.description }}</div>
                             
-                            <div v-if="this.$parent.lang == ''" class="nettix_detail nettix_grey_bg">Merkki: {{ $parent.vehicleDetails.make === null || typeof $parent.vehicleDetails.make === 'undefined' ? '' : $parent.vehicleDetails.make.name }}</div>
-                            <div v-else-if="this.$parent.lang == 'en'" class="nettix_detail nettix_grey_bg">Make: {{ $parent.vehicleDetails.make === null || typeof $parent.vehicleDetails.make === 'undefined' ? '' : $parent.vehicleDetails.make.name }}</div>
+                            <div v-if="this.$parent.lang == ''" class="nettix_detail nettix_grey_bg merkki">Merkki: {{ $parent.vehicleDetails.make === null || typeof $parent.vehicleDetails.make === 'undefined' ? '' : $parent.vehicleDetails.make.name }}</div>
+                            <div v-else-if="this.$parent.lang == 'en'" class="nettix_detail nettix_grey_bg merkki">Make: {{ $parent.vehicleDetails.make === null || typeof $parent.vehicleDetails.make === 'undefined' ? '' : $parent.vehicleDetails.make.name }}</div>
                             
-                            <div v-if="this.$parent.lang == ''" class="nettix_detail">Malli: {{ $parent.vehicleDetails.model === null || typeof $parent.vehicleDetails.model === 'undefined' ? '' : $parent.vehicleDetails.model.name }}</div>
-                            <div v-else-if="this.$parent.lang == 'en'" class="nettix_detail">Model: {{ $parent.vehicleDetails.model === null || typeof $parent.vehicleDetails.model === 'undefined' ? '' : $parent.vehicleDetails.model.name }}</div>
+                            <div v-if="this.$parent.lang == ''" class="nettix_detail malli">Malli: {{ $parent.vehicleDetails.model === null || typeof $parent.vehicleDetails.model === 'undefined' ? '' : $parent.vehicleDetails.model.name }}</div>
+                            <div v-else-if="this.$parent.lang == 'en'" class="nettix_detail malli">Model: {{ $parent.vehicleDetails.model === null || typeof $parent.vehicleDetails.model === 'undefined' ? '' : $parent.vehicleDetails.model.name }}</div>
                             
-                            <div v-if="this.$parent.lang == ''" class="nettix_detail nettix_grey_bg">Vuosimalli: {{ $parent.vehicleDetails.year === null || typeof $parent.vehicleDetails.year === 'undefined' ? '' : $parent.vehicleDetails.year }}</div>
-                            <div v-else-if="this.$parent.lang == 'en'" class="nettix_detail nettix_grey_bg">Year: {{ $parent.vehicleDetails.year === null || typeof $parent.vehicleDetails.year === 'undefined' ? '' : $parent.vehicleDetails.year }}</div>
+                            <div v-if="this.$parent.lang == ''" class="nettix_detail nettix_grey_bg vuosimalli">Vuosimalli: {{ $parent.vehicleDetails.year === null || typeof $parent.vehicleDetails.year === 'undefined' ? '' : $parent.vehicleDetails.year }}</div>
+                            <div v-else-if="this.$parent.lang == 'en'" class="nettix_detail nettix_grey_bg vuosimalli">Year: {{ $parent.vehicleDetails.year === null || typeof $parent.vehicleDetails.year === 'undefined' ? '' : $parent.vehicleDetails.year }}</div>
                             
-                            <div v-if="this.$parent.lang == ''" class="nettix_detail">Hinta: {{ $parent.vehicleDetails.price === null || typeof $parent.vehicleDetails.price === 'undefined' ? '' : $parent.vehicleDetails.price }}€</div>
-                            <div v-else-if="this.$parent.lang == 'en'" class="nettix_detail">Price: {{ $parent.vehicleDetails.price === null || typeof $parent.vehicleDetails.price === 'undefined' ? '' : $parent.vehicleDetails.price }}€</div>
+                            <div v-if="this.$parent.lang == ''" class="nettix_detail hinta">Hinta: {{ $parent.vehicleDetails.price === null || typeof $parent.vehicleDetails.price === 'undefined' ? '' : $parent.vehicleDetails.price }}€</div>
+                            <div v-else-if="this.$parent.lang == 'en'" class="nettix_detail hinta">Price: {{ $parent.vehicleDetails.price === null || typeof $parent.vehicleDetails.price === 'undefined' ? '' : $parent.vehicleDetails.price }}€</div>
                             
-                            <div v-if="this.$parent.lang == ''" class="nettix_detail nettix_grey_bg">Tyyppi: {{ $parent.vehicleDetails.bikeType === null || typeof $parent.vehicleDetails.bikeType === 'undefined' ? '' : $parent.vehicleDetails.bikeType.fi }}</div>
-                            <div v-else-if="this.$parent.lang == 'en'" class="nettix_detail nettix_grey_bg">Type: {{ $parent.vehicleDetails.bikeType === null || typeof $parent.vehicleDetails.bikeType === 'undefined' ? '' : $parent.vehicleDetails.bikeType.en }}</div>
+                            <div v-if="this.$parent.lang == ''" class="nettix_detail nettix_grey_bg tyyppi">Tyyppi: {{ $parent.vehicleDetails.bikeType === null || typeof $parent.vehicleDetails.bikeType === 'undefined' ? '' : $parent.vehicleDetails.bikeType.fi }}</div>
+                            <div v-else-if="this.$parent.lang == 'en'" class="nettix_detail nettix_grey_bg tyyppi">Type: {{ $parent.vehicleDetails.bikeType === null || typeof $parent.vehicleDetails.bikeType === 'undefined' ? '' : $parent.vehicleDetails.bikeType.en }}</div>
                             
-                            <div v-if="this.$parent.lang == ''" class="nettix_detail">Tyyppi/Lisätietoja: {{ $parent.vehicleDetails.bodyType === null || typeof $parent.vehicleDetails.bodyType === 'undefined' ? '' : $parent.vehicleDetails.bodyType.fi }}</div>
-                            <div v-else-if="this.$parent.lang == 'en'" class="nettix_detail">Type/Additional info: {{ $parent.vehicleDetails.bodyType === null || typeof $parent.vehicleDetails.bodyType === 'undefined' ? '' : $parent.vehicleDetails.bodyType.en }}</div>
+                            <div v-if="this.$parent.lang == ''" class="nettix_detail tyyppi_lisatietoja">Tyyppi/Lisätietoja: {{ $parent.vehicleDetails.bodyType === null || typeof $parent.vehicleDetails.bodyType === 'undefined' ? '' : $parent.vehicleDetails.bodyType.fi }}</div>
+                            <div v-else-if="this.$parent.lang == 'en'" class="nettix_detail tyyppi_lisatietoja">Type/Additional info: {{ $parent.vehicleDetails.bodyType === null || typeof $parent.vehicleDetails.bodyType === 'undefined' ? '' : $parent.vehicleDetails.bodyType.en }}</div>
                             
-                            <div v-if="this.$parent.lang == ''" class="nettix_detail nettix_grey_bg">Väri: {{ $parent.vehicleDetails.color === null || typeof $parent.vehicleDetails.color === 'undefined' ? '' : $parent.vehicleDetails.color.fi }}</div>
-                            <div v-else-if="this.$parent.lang == 'en'" class="nettix_detail nettix_grey_bg">Color: {{ $parent.vehicleDetails.color === null || typeof $parent.vehicleDetails.color === 'undefined' ? '' : $parent.vehicleDetails.color.en }}</div>
+                            <div v-if="this.$parent.lang == ''" class="nettix_detail nettix_grey_bg vari">Väri: {{ $parent.vehicleDetails.color === null || typeof $parent.vehicleDetails.color === 'undefined' ? '' : $parent.vehicleDetails.color.fi }}</div>
+                            <div v-else-if="this.$parent.lang == 'en'" class="nettix_detail nettix_grey_bg vari">Color: {{ $parent.vehicleDetails.color === null || typeof $parent.vehicleDetails.color === 'undefined' ? '' : $parent.vehicleDetails.color.en }}</div>
                             
-                            <div v-if="this.$parent.lang == ''" class="nettix_detail">Värin tyyppi: {{ $parent.vehicleDetails.colorType === null || typeof $parent.vehicleDetails.colorType === 'undefined' ? '' : $parent.vehicleDetails.colorType.fi }}</div>
-                            <div v-else-if="this.$parent.lang == 'en'" class="nettix_detail">Color type: {{ $parent.vehicleDetails.colorType === null || typeof $parent.vehicleDetails.colorType === 'undefined' ? '' : $parent.vehicleDetails.colorType.en }}</div>
+                            <div v-if="this.$parent.lang == ''" class="nettix_detail varin_tyyppi">Värin tyyppi: {{ $parent.vehicleDetails.colorType === null || typeof $parent.vehicleDetails.colorType === 'undefined' ? '' : $parent.vehicleDetails.colorType.fi }}</div>
+                            <div v-else-if="this.$parent.lang == 'en'" class="nettix_detail varin_tyyppi">Color type: {{ $parent.vehicleDetails.colorType === null || typeof $parent.vehicleDetails.colorType === 'undefined' ? '' : $parent.vehicleDetails.colorType.en }}</div>
                             
-                            <div v-if="this.$parent.lang == ''" class="nettix_detail nettix_grey_bg">Polttoaine: {{ $parent.vehicleDetails.fuelType === null || typeof $parent.vehicleDetails.fuelType === 'undefined' ? '' : $parent.vehicleDetails.fuelType.fi }}</div>
-                            <div v-else-if="this.$parent.lang == 'en'" class="nettix_detail nettix_grey_bg">Fuel type: {{ $parent.vehicleDetails.fuelType === null || typeof $parent.vehicleDetails.fuelType === 'undefined' ? '' : $parent.vehicleDetails.fuelType.en }}</div>
+                            <div v-if="this.$parent.lang == ''" class="nettix_detail nettix_grey_bg polttoaine">Polttoaine: {{ $parent.vehicleDetails.fuelType === null || typeof $parent.vehicleDetails.fuelType === 'undefined' ? '' : $parent.vehicleDetails.fuelType.fi }}</div>
+                            <div v-else-if="this.$parent.lang == 'en'" class="nettix_detail nettix_grey_bg polttoaine">Fuel type: {{ $parent.vehicleDetails.fuelType === null || typeof $parent.vehicleDetails.fuelType === 'undefined' ? '' : $parent.vehicleDetails.fuelType.en }}</div>
                             
-                            <div v-if="this.$parent.lang == ''" class="nettix_detail">Vetotapa: {{ $parent.vehicleDetails.driveType === null || typeof $parent.vehicleDetails.driveType === 'undefined' ? '' : $parent.vehicleDetails.driveType.fi }}</div>
-                            <div v-else-if="this.$parent.lang == 'en'" class="nettix_detail">Traction: {{ $parent.vehicleDetails.driveType === null || typeof $parent.vehicleDetails.driveType === 'undefined' ? '' : $parent.vehicleDetails.driveType.en }}</div>
+                            <div v-if="this.$parent.lang == ''" class="nettix_detail vetotapa">Vetotapa: {{ $parent.vehicleDetails.driveType === null || typeof $parent.vehicleDetails.driveType === 'undefined' ? '' : $parent.vehicleDetails.driveType.fi }}</div>
+                            <div v-else-if="this.$parent.lang == 'en'" class="nettix_detail vetotapa">Traction: {{ $parent.vehicleDetails.driveType === null || typeof $parent.vehicleDetails.driveType === 'undefined' ? '' : $parent.vehicleDetails.driveType.en }}</div>
 
-                            <div v-if="this.$parent.lang == '' && $parent.vehicleDetails.accessories" class="nettix_detail nettix_grey_bg">Lisävarusteet:
+                            <div v-if="this.$parent.lang == '' && $parent.vehicleDetails.accessories" class="nettix_detail nettix_grey_bg lisavarusteet">Lisävarusteet:
                                 <span v-for="i in $parent.vehicleDetails.accessories" :key="i.fi">
                                 {{ i.fi + ', '}}
                                 </span>
                             </div>
 
-                            <div v-else-if="this.$parent.lang == 'en' && $parent.vehicleDetails.accessories" class="nettix_detail nettix_grey_bg">Accessories:
+                            <div v-else-if="this.$parent.lang == 'en' && $parent.vehicleDetails.accessories" class="nettix_detail nettix_grey_bg lisavarusteet">Accessories:
                                 <span v-for="i in $parent.vehicleDetails.accessories" :key="i.en">
                                 {{ i.en + ', '}}
                                 </span>
                             </div>
 
-                            <div v-if="this.$parent.lang == ''" class="nettix_detail">Moottorin tilavuus: {{ $parent.vehicleDetails.engineSize === null || typeof $parent.vehicleDetails.engineSize === 'undefined' ? '' : $parent.vehicleDetails.engineSize }}L</div>
-                            <div v-else-if="this.$parent.lang == 'en'" class="nettix_detail">Engine capacity: {{ $parent.vehicleDetails.engineSize === null || typeof $parent.vehicleDetails.engineSize === 'undefined' ? '' : $parent.vehicleDetails.engineSize }}L</div>
+                            <div v-if="this.$parent.lang == ''" class="nettix_detail moottorin_tilavuus">Moottorin tilavuus: {{ $parent.vehicleDetails.engineSize === null || typeof $parent.vehicleDetails.engineSize === 'undefined' ? '' : $parent.vehicleDetails.engineSize }}L</div>
+                            <div v-else-if="this.$parent.lang == 'en'" class="nettix_detail moottorin_tilavuus">Engine capacity: {{ $parent.vehicleDetails.engineSize === null || typeof $parent.vehicleDetails.engineSize === 'undefined' ? '' : $parent.vehicleDetails.engineSize }}L</div>
                             
-                            <div v-if="this.$parent.lang == ''" class="nettix_detail nettix_grey_bg">Omistajien lukumäärä: {{ $parent.vehicleDetails.totalOwners === null || typeof $parent.vehicleDetails.totalOwners === 'undefined' ? '' : $parent.vehicleDetails.totalOwners }}kpl</div>
-                            <div v-else-if="this.$parent.lang == 'en'" class="nettix_detail nettix_grey_bg">Number of owners: {{ $parent.vehicleDetails.totalOwners === null || typeof $parent.vehicleDetails.totalOwners === 'undefined' ? '' : $parent.vehicleDetails.totalOwners }}pcs</div>
+                            <div v-if="this.$parent.lang == ''" class="nettix_detail nettix_grey_bg omistajien_lkm">Omistajien lukumäärä: {{ $parent.vehicleDetails.totalOwners === null || typeof $parent.vehicleDetails.totalOwners === 'undefined' ? '' : $parent.vehicleDetails.totalOwners }}kpl</div>
+                            <div v-else-if="this.$parent.lang == 'en'" class="nettix_detail nettix_grey_bg omistajien_lkm">Number of owners: {{ $parent.vehicleDetails.totalOwners === null || typeof $parent.vehicleDetails.totalOwners === 'undefined' ? '' : $parent.vehicleDetails.totalOwners }}pcs</div>
                             
-                            <div v-if="this.$parent.lang == ''" class="nettix_detail">Mittarilukema: {{ $parent.vehicleDetails.kilometers === null || typeof $parent.vehicleDetails.kilometers === 'undefined' ? '' : $parent.vehicleDetails.kilometers }}km</div>
-                            <div v-else-if="this.$parent.lang == 'en'" class="nettix_detail">Mileage: {{ $parent.vehicleDetails.kilometers === null || typeof $parent.vehicleDetails.kilometers === 'undefined' ? '' : $parent.vehicleDetails.kilometers }}km</div>
+                            <div v-if="this.$parent.lang == ''" class="nettix_detail mittarilukema">Mittarilukema: {{ $parent.vehicleDetails.kilometers === null || typeof $parent.vehicleDetails.kilometers === 'undefined' ? '' : $parent.vehicleDetails.kilometers }}km</div>
+                            <div v-else-if="this.$parent.lang == 'en'" class="nettix_detail mittarilukema">Mileage: {{ $parent.vehicleDetails.kilometers === null || typeof $parent.vehicleDetails.kilometers === 'undefined' ? '' : $parent.vehicleDetails.kilometers }}km</div>
 
                             <div v-if="this.$parent.lang == ''" @click="takaisin_hakutuloksiin()" v-scroll-to="'#nettix_hakutulokset_tag'" class="nettix_takaisin_hakutuloksiin">&laquo; Takaisin hakutuloksiin</div>
                             <div v-else-if="this.$parent.lang == 'en'" @click="takaisin_hakutuloksiin()" v-scroll-to="'#nettix_hakutulokset_tag'" class="nettix_takaisin_hakutuloksiin">&laquo; Back to search results</div>
