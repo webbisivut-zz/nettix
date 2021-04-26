@@ -18,7 +18,7 @@
                           <option v-if="this.$parent.lang == ''" value="">Kaikki</option>
                           <option v-else-if="this.$parent.lang == 'en'" value="">All</option>
 
-                          <option v-for="ajoneuvolaji in this.$parent.ajoneuvolajit" :key="ajoneuvolaji.id">
+                          <option v-for="ajoneuvolaji in this.$parent.ajoneuvolajit" :key="ajoneuvolaji.id" :value="ajoneuvolaji.id">
                               {{ ajoneuvolaji.name }}
                           </option>
                       </select>
@@ -30,7 +30,7 @@
                         <option v-if="this.$parent.lang == ''" value="">Kaikki</option>
                         <option v-else-if="this.$parent.lang == 'en'" value="">All</option>
 
-                        <option v-for="merkki in this.$parent.merkit" :key="merkki.id">
+                        <option v-for="merkki in this.$parent.merkit" :key="merkki.id" :value="merkki.id">
                             {{ merkki.name }}
                         </option>
                     </select>
@@ -42,7 +42,7 @@
                         <option v-if="this.$parent.lang == ''" value="">Kaikki</option>
                         <option v-else-if="this.$parent.lang == 'en'" value="">All</option>
                         
-                        <option v-for="malli in this.$parent.mallit" :key="malli.id">
+                        <option v-for="malli in this.$parent.mallit" :key="malli.id" :value="malli.id">
                             {{ malli.name }}
                         </option>
                     </select>

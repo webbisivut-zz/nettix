@@ -381,23 +381,6 @@ class WB_Nettix_Pro_Admin_Ajax {
 		$ajoneuvolaji = sanitize_text_field($dataArr->{'ajoneuvolaji'});
 		$id = sanitize_text_field($dataArr->{'id'});
 
-		if($ajoneuvotyyppi == 'Autot') {
-			$vehicle_list = file_get_contents(nettix_temp . '/car_ids.txt', 'r');
-		} else if($ajoneuvotyyppi == 'Motot') { 
-			$vehicle_list = file_get_contents(nettix_temp . '/motorbike_ids.txt', 'r');
-		}
-
-		$vehicle_list = json_decode($vehicle_list);
-		foreach ($vehicle_list as $vehicle) {
-			$name = strtolower($vehicle->name);
-			$get_merkki = strtolower($id);
-
-			if($name == $get_merkki) {
-				$id = $vehicle->id;
-				break;
-			}
-		}
-
 		$modelsArr = [];
 		$modelsArr2 = [];
 
@@ -749,23 +732,6 @@ class WB_Nettix_Pro_Admin_Ajax {
 
 			$mergedOutput = '';
 
-			if($ajoneuvotyyppi == 'Autot') {
-				$vehicle_list = file_get_contents(nettix_temp . '/car_ids.txt', 'r');
-			} else if($ajoneuvotyyppi == 'Motot') { 
-				$vehicle_list = file_get_contents(nettix_temp . '/motorbike_ids.txt', 'r');
-			}
-
-			$vehicle_list = json_decode($vehicle_list);
-			foreach ($vehicle_list as $vehicle) {
-				$name = strtolower($vehicle->name);
-				$get_merkki = strtolower($merkki);
-
-				if($name == $get_merkki) {
-					$merkki = $vehicle->id;
-					break;
-				}
-			}
-			
 			for($b=0; $b < $hakukerroin; $b++) {
 				if($b == 1 && $id2 != '' && $id2 != null) {
 					$id = $id2;

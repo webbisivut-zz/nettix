@@ -556,7 +556,7 @@
                     var kaupunki = ''
                     var maakunta = ''
                 }
-                
+
                 var pagenumber = this.pagenumber
 
                 var obj = {}
@@ -567,8 +567,8 @@
                 obj['malli'] = malli
                 obj['vapaa_haku'] = vapaa_haku
 
-                obj['kilometrit_alkaen'] = kilometrit_alkaen
-                obj['kilometrit_paattyen'] = kilometrit_paattyen
+                obj['kilometrit_alkaen'] = kilometrit_alkaen.replace(' km', '')
+                obj['kilometrit_paattyen'] = kilometrit_paattyen.replace(' km', '')
                 obj['hinta_alkaen'] = hinta_alkaen
                 obj['hinta_paattyen'] = hinta_paattyen
 
