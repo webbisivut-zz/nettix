@@ -192,25 +192,24 @@
                     </div>
                     <div id="nettix_jakonapit" v-if="this.$parent.asetukset.jakonapit == 'kylla'">
                         <div id="share-buttons">
+			  <p>Jaa ystävillesi</p>
 
                             <!-- Facebook -->
-                            <a :href="'http://www.facebook.com/sharer.php?u=' + this.encodedurl" target="_blank">
-                                <img :src="this.$parent.siteurl + '/wp-content/plugins/wb-nettix/dist/images/facebook.png'" alt="Facebook" />
-                            </a>
-
-                            <!-- Google+ -->
-                            <a :href="'https://plus.google.com/share?url=' + this.encodedurl" target="_blank">
-                                <img :src="this.$parent.siteurl + '/wp-content/plugins/wb-nettix/dist/images/google.png'" alt="Google" />
-                            </a>
-
-                            <!-- LinkedIn -->
-                            <a :href="'http://www.linkedin.com/shareArticle?mini=true&amp;url=' + this.encodedurl" target="_blank">
-                                <img :src="this.$parent.siteurl + '/wp-content/plugins/wb-nettix/dist/images/linkedin.png'" alt="LinkedIn" />
+                            <a class="facebook-share-button" data-size="large" 
+                                :href="'https://www.facebook.com/sharer/sharer.php?u=' + this.encodedurl +'&utm_source=facebook&utm_medium=social_share&utm_campaign=share'" target="_blank">
+                                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><title>facebook</title><polyline points="40.73 197.82 40.73 40.73 215.27 40.73" style="fill:#fff"></polyline><path d="M128,0C57.31,0,0,13.11,0,128S57.31,256,128,256" style="fill:#3b5997"></path><path d="M110.55,186.18v-64H98.91V104.73h11.64v-15C110.55,79.7,115.35,64,134,64" style="fill:#3b5997"></path><rect x="40.73" y="40.73" width="174.55" height="157.09" style="fill:#fff"></rect><path d="M128,0C57.31,0,0,13.11,0,128S57.31,256,128,256s128-13.14,128-128S198.69,0,128,0Zm23.27,87.85H140.34c-2,0-6.52-1.58-6.52,3.2v13.68h17.45l-.44,17.45h-17v64H110.55v-64H98.91V104.73h11.64v-15C110.55,79.7,115.35,64,134,64l17.32.07Z" style="fill:#3b5997"></path></svg>
                             </a>
 
                             <!-- Twitter -->
-                            <a class="twitter-share-button" data-size="large" :href="'https://twitter.com/intent/tweet?url=' + this.encodedurl" target="_blank">
-                                <img :src="this.$parent.siteurl + '/wp-content/plugins/wb-nettix/dist/images/twitter.png'" alt="Twitter" />
+                            <a class="twitter-share-button" data-size="large" 
+                                :href="'https://twitter.com/intent/tweet?url=' + this.encodedurl + '&utm_source=twitter&utm_medium=social_share&utm_campaign=share'" target="_blank">
+                                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><title>twitter</title><path d="M128,0C57.31,0,0,13.11,0,128S57.31,256,128,256s128-13.14,128-128S198.69,0,128,0Zm46,103.92c.06,1,.08,2.11.08,3.18,0,32.33-24.61,69.63-69.63,69.63a69.29,69.29,0,0,1-37.51-11,51,51,0,0,0,5.84.34,49.08,49.08,0,0,0,30.39-10.48,24.48,24.48,0,0,1-22.86-17,24.1,24.1,0,0,0,4.61.45,24.89,24.89,0,0,0,6.44-.86,24.49,24.49,0,0,1-19.63-24v-.31a24.19,24.19,0,0,0,11.08,3.06A24.51,24.51,0,0,1,75.2,84.26a69.5,69.5,0,0,0,50.44,25.58,24.49,24.49,0,0,1,41.7-22.33,48.74,48.74,0,0,0,15.54-5.94A24.45,24.45,0,0,1,172.12,95.1a48.71,48.71,0,0,0,14.06-3.85A49.08,49.08,0,0,1,174,103.92Z" style="fill:#00aced"></path></svg>
+                            </a>
+
+                            <!-- WA -->
+                            <a class="wa-share-button" data-size="large" 
+                                :href="'https://wa.me/?text='+ this.encodedurl + '&utm_source=whatsapp&utm_medium=social_share&utm_campaign=share'" target="_blank">
+                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 58 58" style="enable-background:new 0 0 58 58;" xml:space="preserve"><g><path style="fill:#2CB742;" d="M0,58l4.988-14.963C2.457,38.78,1,33.812,1,28.5C1,12.76,13.76,0,29.5,0S58,12.76,58,28.5 S45.24,57,29.5,57c-4.789,0-9.299-1.187-13.26-3.273L0,58z"></path><path style="fill:#FFFFFF;" d="M47.683,37.985c-1.316-2.487-6.169-5.331-6.169-5.331c-1.098-0.626-2.423-0.696-3.049,0.42 c0,0-1.577,1.891-1.978,2.163c-1.832,1.241-3.529,1.193-5.242-0.52l-3.981-3.981l-3.981-3.981c-1.713-1.713-1.761-3.41-0.52-5.242 c0.272-0.401,2.163-1.978,2.163-1.978c1.116-0.627,1.046-1.951,0.42-3.049c0,0-2.844-4.853-5.331-6.169 c-1.058-0.56-2.357-0.364-3.203,0.482l-1.758,1.758c-5.577,5.577-2.831,11.873,2.746,17.45l5.097,5.097l5.097,5.097 c5.577,5.577,11.873,8.323,17.45,2.746l1.758-1.758C48.048,40.341,48.243,39.042,47.683,37.985z"></path></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
                             </a>
 
                         </div>
