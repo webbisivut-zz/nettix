@@ -126,6 +126,9 @@
                     <div id="nettix_yhteydenotto_lomake" class="nettix_sidebar" v-if="this.$parent.asetukset.lisatiedot == 'kylla'">
                         <h3 v-if="this.$parent.lang == ''">Kysy lisätietoja:</h3>
                         <h3 v-else-if="this.$parent.lang == 'en'">For more info:</h3>
+ 
+                        <a v-if="this.$parent.lang == ''" class="nettix_contact" @click="nettixGaWA()" :href="'https://api.whatsapp.com/send?phone=' + this.$parent.asetukset.whatsapp_numero +'&text=Olen%20kiinnostunut%20autosta%20' + this.$parent.vehicleDetails.registerNumber "><div class="nettix_phone">Lähetä WhatsApp -viesti</div></a>
+                        <a v-else-if="this.$parent.lang == 'en'" class="nettix_contact" @click="nettixGaWA()" :href="'https://api.whatsapp.com/send?phone=' + this.$parent.asetukset.whatsapp_numero+'&text=I%20am%20interested%20of%20the%20car%20' + this.$parent.vehicleDetails.registerNumber"><div class="nettix_phone">Send WhatsApp message</div></a>
                         
                         <a v-if="this.$parent.lang == ''" class="nettix_contact" @click="nettixGaTel()" :href="'tel:' + this.$parent.asetukset.yrityksen_puhelin"><div class="nettix_phone">Soita: {{ this.$parent.asetukset.yrityksen_puhelin }}</div></a>
                         <a v-else-if="this.$parent.lang == 'en'" class="nettix_contact" @click="nettixGaTel()" :href="'tel:' + this.$parent.asetukset.yrityksen_puhelin"><div class="nettix_phone">Call: {{ this.$parent.asetukset.yrityksen_puhelin }}</div></a>
@@ -403,6 +406,11 @@
             isPhone(phone) {
                 var regex = /^[0-9+ ]+$/;
                 return regex.test(phone)
+            },
+	        nettixGaWA() {
+                if(this.$parent.asetukset.ga == 'kylla' && typeof ga != 'undefined') {
+                    ga('send', 'event', 'Nettix yhteydenotto', 'Whatsapp', this.currentUrl)
+                }
             },
             nettixGaTel() {
                 if(this.$parent.asetukset.ga == 'kylla' && typeof ga != 'undefined') {
