@@ -4,13 +4,13 @@
         <h3>Rahoituslaskuri</h3>
 
         <p class="wb_counter_title">Rahoitettava osuus (EUR): {{ wb_counter_price }}</p>
-        <p><input class="wb_counter_input_range" type="range" min="2000" max="100000" step="100" v-model="wb_counter_price" v-on:change="lopullinenLaskelma()"></p>
+        <p><input class="wb_counter_input_range" type="range" min="2000" :max="wb_car_price" step="100" v-model="wb_counter_price" v-on:change="lopullinenLaskelma()"></p>
         
         <p class="wb_counter_title">Käsiraha (EUR): {{ wb_counter_kasiraha }}</p>
-        <p><input class="wb_counter_input_range" type="range" min="0" max="100000" step="100" v-model="wb_counter_kasiraha" v-on:change="lopullinenLaskelma()"></p>
+        <p><input class="wb_counter_input_range" type="range" min="0" :max="wb_counter_price" step="100" v-model="wb_counter_kasiraha" v-on:change="lopullinenLaskelma()"></p>
         
         <p class="wb_counter_title">Suurempi viimeinen erä (EUR): {{ wb_counter_viimeinen_era }}</p>
-        <p><input class="wb_counter_input_range" type="range" min="0" max="50000" step="100" v-model="wb_counter_viimeinen_era" v-on:change="lopullinenLaskelma()"></p>
+        <p><input class="wb_counter_input_range" type="range" min="0" :max="wb_car_price" step="100" v-model="wb_counter_viimeinen_era" v-on:change="lopullinenLaskelma()"></p>
         
         <p class="wb_counter_title">Korko: (%)</p>
         <p><input class="wb_counter_input" type="text" v-model="wb_counter_korko" v-on:change="lopullinenLaskelma()"></p>
@@ -25,7 +25,13 @@
       </div>
 
       <div id="wb_counted_wrap">
-        <p class="wb_counter_input" v-if="!this.virhe">Kuukausierä: {{ haeKkEra }} EUR / kk*</p>
+        <p class="wb_counter_input" v-if="!this.virhe">
+          Kuukausierä: {{ haeKkEra }} EUR / kk*<br />
+          Luoton perustamismaksu: {{ perustamismaksu }}€ <br />
+          Tilinhoitomaksu: {{ tilinhoitomaksu }}€/kk<br />
+          Kustannukset yhteensä: {{ takaisinmaksu_yhteensa }}€
+          
+        </p>
         <p class="wb_counter_input" v-if="this.wb_counter_kasiraha > this.wb_counter_price">Virhe! Käsiraha ei voi olla suurempi kuin ajoneuvon hinta!</p>
         <p class="wb_counter_input" v-if="this.wb_counter_viimeinen_era > this.wb_counter_price">Virhe! Viimeinen erä ei voi olla suurempi kuin ajoneuvon hinta!</p>
         <p class="wb_counter_info" v-if="!this.virhe">* Laskelma on suuntaa-antava. Varmista lopullinen kk-erän suuruus aina myyjältä!</p>
@@ -39,13 +45,15 @@ export default {
   data() {
     return {
       haeKkEra: '',
-      perustamismaksu: 200,
-      tilinhoitomaksu: 9,
+      takaisinmaksu_yhteensa: '',
+      perustamismaksu: 350,
+      tilinhoitomaksu: 12,
       euribor: 3,
+      wb_car_price: '',
       wb_counter_price: 2000,
       wb_counter_kasiraha: 0,
       wb_counter_viimeinen_era: 0,
-      wb_counter_korko: 3.9,
+      wb_counter_korko: 4.9,
       wb_laina_aika: 72,
       wb_takaisinmaksu_yhteensa: 0,
       wb_korot_yhteensa: 0,
@@ -59,7 +67,7 @@ export default {
     getVehiclePrice() {
       if(this.$parent.$parent && this.$parent.$parent.vehicleDetails.price) {
         this.wb_counter_price = this.$parent.$parent.vehicleDetails.price;
-
+        this.wb_car_price = this.$parent.$parent.vehicleDetails.price;
         this.wb_counter_kasiraha = Math.ceil(this.wb_counter_price / 3);
       }
       
@@ -109,6 +117,9 @@ export default {
         var haeKKEra = this.todellinenVuosikorko(setHinta, lainaAika, parseFloat(korko), parseFloat(viimeinen_era));
 
         this.haeKkEra =  Math.ceil(parseFloat(haeKKEra.kk_era) + parseFloat(this.tilinhoitomaksu) + setViimenenKKEra);
+        
+	      var takaisinmaksu_yhteensa = Math.ceil(parseFloat(haeKKEra.kustannukset_yhteensa));
+        this.takaisinmaksu_yhteensa = takaisinmaksu_yhteensa;
     },
     todellinenVuosikorko(hinta, lainaAika, korko, viimeinen_era) {
       var principal = parseFloat(hinta);
