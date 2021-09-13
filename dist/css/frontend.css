@@ -449,3 +449,20 @@ input.wb_counter_button {
         max-height:200px;
     }
 }
+/* Sharebuttons */
+#share-buttons {
+    display: inline-flex;
+    align-items: center;
+}
+#share-buttons p {
+    margin: 0;
+}
+.facebook-share-button,
+.twitter-share-button,
+.wa-share-button {
+    width: 32px;
+    height: 32px;
+    display: block;
+    cursor: pointer;
+    padding: 2px;
+}
