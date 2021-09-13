@@ -569,6 +569,7 @@ class WB_Nettix_Pro_Admin_Ajax {
 
 		// Single item
 		$kuvan_koko = esc_attr(get_option('nettix_kuvan_koko'));
+		$whatsapp_numero = esc_attr(get_option('nettix_whatsapp_numero'));
 		$km_otsikossa = esc_attr(get_option('nettix_km_otsikossa'));
 
 		// Search
@@ -634,6 +635,7 @@ class WB_Nettix_Pro_Admin_Ajax {
 			'googlemaps' => $googlemaps,
 			'googlemaps2' => $googlemaps2,
 			'jakonapit' => $jakonapit,
+			'whatsapp_numero' => $whatsapp_numero,
 			'cpt' => $cpt,
 			'laskuri' => $laskuri,
 			'laskurin_korko' => $laskurin_korko,

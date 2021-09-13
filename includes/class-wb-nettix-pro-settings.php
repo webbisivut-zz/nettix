@@ -383,6 +383,14 @@ class WB_Nettix_Pro_Settings {
 					'options'		=> array('ei' => 'Ei', 'kylla' => 'Kyllä'),
 					'default'		=> 'ei'
 				),
+				array(
+					'id' 			=> 'whatsapp_numero',
+					'label'			=> __( 'WhatsApp-numero' , 'wb-nettix-pro' ),
+					'description'	=> __( 'Näytetään ota yhteyttä whatsapin kautta yhteydessä ', 'wb-nettix-pro' ),
+					'type'			=> 'text',
+					'default'		=> '+358400456995',
+					'placeholder'	=> ''
+				),
 			)
 		);
 
