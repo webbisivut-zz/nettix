@@ -92,9 +92,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="wb-md-4" v-if="this.$parent.asetukset.mainos == 'kylla' || this.$parent.asetukset.lisatiedot == 'kylla' || this.$parent.asetukset.viesti == 'kylla' || this.$parent.asetukset.sijainti == 'kylla' || this.$parent.asetukset.tiedot_email == 'kylla' || this.$parent.asetukset.laskuri == 'kylla'">
-                    <div id="nettix_laskuri" class="nettix_sidebar" v-if="this.$parent.asetukset.laskuri == 'kylla'">
-                        <Laskuri></Laskuri>
+                <div class="wb-md-4" 
+                    v-if="
+                    this.$parent.asetukset.mainos == 'kylla' || 
+                    this.$parent.asetukset.lisatiedot == 'kylla' || 
+                    this.$parent.asetukset.viesti == 'kylla' || 
+                    this.$parent.asetukset.sijainti == 'kylla' || 
+                    this.$parent.asetukset.tiedot_email == 'kylla' || 
+                    this.$parent.asetukset.laskuri == 'kylla'
+                    ">
+                    <div class="nettix_sidebar" v-if="this.$parent.asetukset.laskuri === 'kylla'">
+                        <Laskuri />
                     </div>
                     <div id="nettix_mainos" class="nettix_sidebar" v-if="this.$parent.asetukset.mainos == 'kylla'">
                         <h3>{{ this.$parent.asetukset.mainosteksti }}</h3>
@@ -102,6 +110,7 @@
                         <a v-if="this.$parent.lang == ''" style="text-decoration: none;" :href="this.$parent.asetukset.mainos_linkki"><div id="nettix_haku_btn">Pyydä lisätietoja!</div></a>
                         <a v-else-if="this.$parent.lang == 'en'" style="text-decoration: none;" :href="this.$parent.asetukset.mainos_linkki"><div id="nettix_haku_btn">Ask for more info!</div></a>
                     </div>
+                    
                     <div id="nettix_tiedot_email" class="nettix_sidebar" v-if="this.$parent.asetukset.tiedot_email == 'kylla'">
                         <h3 v-if="this.$parent.lang == ''">Tilaa ajoneuvon tiedot sähköpostiin:</h3>
                         <h3 v-else-if="this.$parent.lang == 'en'">Get vehicle info to your email:</h3>
@@ -115,7 +124,7 @@
                             <p v-else-if="this.$parent.lang == 'en'">Message could not be delivered because of the following errors:</p>
                             
                             <div v-if="this.$parent.lang == ''" id="nettix_virhe_email_address">Sähköposti on virheellinen.</div>
-                            <div v-else-if="this.$parent.lang == ''" id="nettix_virhe_email_address">Error in email field.</div>
+                            <div v-else-if="this.$parent.lang == 'en'" id="nettix_virhe_email_address">Error in email field.</div>
                         </div>
 
                         <div @click="nettixTiedotEmail()" id="nettix_haku_btn" :class="this.odottaa_lahetysta_tiedot ? 'btn_nettix_odottaa' : ''">{{ this.laheta_nettix_tiedot }}</div>
@@ -141,16 +150,16 @@
                             <p v-else-if="this.$parent.lang == 'en'">Message could not be delivered because of the following errors:</p>
                             
                             <div v-if="this.$parent.lang == ''" id="nettix_virhe_nimi">Nimi puuttuu tai on virheellinen.</div>
-                            <div v-else-if="this.$parent.lang == ''" id="nettix_virhe_nimi">Error in name field.</div>
+                            <div v-else-if="this.$parent.lang == 'en'" id="nettix_virhe_nimi">Error in name field.</div>
                             
                             <div v-if="this.$parent.lang == ''" id="nettix_virhe_email">Sähköposti on virheellinen.</div>
-                            <div v-else-if="this.$parent.lang == ''" id="nettix_virhe_email">Error in email field.</div>
+                            <div v-else-if="this.$parent.lang == 'en'" id="nettix_virhe_email">Error in email field.</div>
 
                             <div v-if="this.$parent.lang == ''" id="nettix_virhe_puhelin">Puhelinnumero on virheellinen.</div>
-                            <div v-else-if="this.$parent.lang == ''" id="nettix_virhe_puhelin">Error in phone number field.</div>
+                            <div v-else-if="this.$parent.lang == 'en'" id="nettix_virhe_puhelin">Error in phone number field.</div>
                             
                             <div v-if="this.$parent.lang == ''" id="nettix_virhe_viesti">Viestikenttä on tyhjä.</div>
-                            <div v-else-if="this.$parent.lang == ''" id="nettix_virhe_viesti">Error in message field.</div>
+                            <div v-else-if="this.$parent.lang == 'en'" id="nettix_virhe_viesti">Error in message field.</div>
                         </div>
                         <input v-if="this.$parent.lang == ''" id="nettix_contact_nimi" class="nettix_input" type="text" placeholder="Nimi*">
                         <input v-else-if="this.$parent.lang == 'en'" id="nettix_contact_nimi" class="nettix_input" type="text" placeholder="Name*">
@@ -164,7 +173,7 @@
                         <input id="nettix_contact_phone" class="nettix_input" type="hidden">
                         
                         <textarea v-if="this.$parent.lang == ''" id="nettix_contact_viesti" class="nettix_input" placeholder="Viesti*"></textarea>
-                        <textarea v-else-if="this.$parent.lang == ''" id="nettix_contact_viesti" class="nettix_input" placeholder="Message*"></textarea>
+                        <textarea v-else-if="this.$parent.lang == 'en'" id="nettix_contact_viesti" class="nettix_input" placeholder="Message*"></textarea>
                         
                         <div @click="nettixContact()" id="nettix_haku_btn" :class="this.odottaa_lahetysta ? 'btn_nettix_odottaa' : ''">{{ this.laheta_nettix }}</div>
                         

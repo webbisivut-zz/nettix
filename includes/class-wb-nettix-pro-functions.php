@@ -229,7 +229,7 @@ class WB_Nettix_Functions {
 
                     // Generate XML if selected
                     if($xml == 'kylla') {
-                        $xmlContent = $this->generateXML('nettiauto');
+                        $xmlContent =  WB_Nettix_Functions::generateXML('nettiauto');
 
                         if(file_exists(nettix_temp . '/temp/nettiauto/nettiauto.xml')) {
                             unlink(nettix_temp . '/temp/nettiauto/nettiauto.xml');
@@ -321,7 +321,7 @@ class WB_Nettix_Functions {
 
                     // Generate XML if selected
                     if($xml == 'kylla') {
-                        $xmlContent = $this->generateXML('nettimoto');
+                        $xmlContent =  WB_Nettix_Functions::generateXML('nettimoto');
 
                         if(file_exists(plugin_dir_path( __FILE__ ) . 'temp/nettimoto/nettimoto.xml')) {
                             unlink(plugin_dir_path( __FILE__ ) . 'temp/nettimoto/nettimoto.xml');
