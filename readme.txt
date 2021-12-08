@@ -3,8 +3,11 @@ Contributors: Webbisivut.org
 Donate link: https://webbisivut.org/
 Tags: wordpress, plugin, nettix
 Requires at least: 3.9
-Tested up to: 5.7.1
-Stable tag: 1.4.3
+Tested up to: 5.8.2
+Stable tag: 1.4.4
+
+= 1.4.4 =
+* XML bug fix
 
 = 1.4.3 =
 * Search adjustments

@@ -4,3 +4,7 @@ temp/nettiauto/vehicles_full_list.txt
 temp/car_ids.txt
 .gitignore
 temp/nettiauto/vehicles_full_list.txt
+temp/token.txt
+temp/nettiauto/vehicles_full_list.txt
+temp/nettimoto/nettimoto.xml
+temp/nettimoto/vehicles_full_list.txt
