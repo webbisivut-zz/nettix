@@ -1,10 +1,13 @@
-=== WB Nettix Pro ===
-Contributors: Webbisivut.org
-Donate link: https://webbisivut.org/
+=== WB Nettix ===
+Contributors: WebData Oy
+Donate link: https://webdata.fi/
 Tags: wordpress, plugin, nettix
 Requires at least: 3.9
-Tested up to: 5.8.2
+Tested up to: 5.8.3
 Stable tag: 1.4.4
+
+This plugin fetches data from Nettix API and displays the data on frontend. Use shortcode [nettix] to display the vehicles.
+For PAID support, please contact: kimmo [at] webdata dot fi
 
 = 1.4.4 =
 * XML bug fix

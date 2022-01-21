@@ -1,13 +1,13 @@
 <?php
 /*
- * Plugin Name: WordPress Nettix Pro
+ * Plugin Name: WordPress Nettix
  * Version: 1.4.4
  * Plugin URI: https://webbisivut.org/
- * Description: WordPress Nettix Pro lisäosa
+ * Description: WordPress Nettix lisäosa
  * Author: Webbisivut.org
  * Author URI: https://webbisivut.org/
  * Requires at least: 4.0
- * Tested up to: 5.8.2
+ * Tested up to: 5.8.3
  *
  * Text Domain: wb-nettix-pro
  * Domain Path: /lang/
